@@ -92,9 +92,13 @@ The AI/agent layer inside VS Code that can work with the project.
 1. Create a GitHub account
 2. Apply for **GitHub Education**
 3. Install VS Code
-4. Enable GitHub Copilot
-5. Sign in
-6. Configure extensions as needed
+4. Create or locate the GitHub repository
+5. **Clone the repository into VS Code so you have a local working copy**
+6. Enable GitHub Copilot
+7. Sign in
+8. Configure extensions as needed
+
+**Key repository workflow:** GitHub repository → clone locally → work in VS Code → commit → push back to GitHub.
 
 ### Extensions
 Extensions are apps for VS Code. Examples:
