@@ -1,0 +1,31 @@
+# Third-party reference material (kept locally, not distributed)
+presentation/Introduction to agent-first development.html
+
+# Office lock files
+~$*.pptx
+~$*.docx
+~$*.xlsx
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets — never commit API keys
+.env
+.env.*
+*.key
+*.pem
+
+# Demo outputs are regenerated live; only the expected fallbacks are tracked
+live/generated/*
+!live/generated/expected/
+
+# Raw recordings stay out of git (trimmed clips are added deliberately)
+*.mp4
+*.mov
+*.mkv
+
+# Python
+__pycache__/
+*.pyc
