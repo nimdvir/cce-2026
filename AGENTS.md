@@ -61,4 +61,4 @@ git clean -fd live/
 
 ## Where prompts live
 
-Saved prompts used to build and demonstrate this project are in `presentation/prompts.md`. Reusable Copilot prompt files are in `.github/prompts/`.
+Every prompt used to build and demonstrate this project is a Copilot prompt file in `.github/prompts/`, one file each. `presentation/prompts.md` is the index of those files and does not repeat their text. Prompts shown in the session also appear verbatim on the website pages.
