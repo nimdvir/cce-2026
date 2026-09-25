@@ -501,7 +501,39 @@ Basic steps:
 - install
 - launch
 - sign into GitHub
-- open a folder/repository
+
+---
+
+## Clone the Repository Into VS Code
+
+This is an important bridge between the online GitHub repository and the local workspace where the agent will work.
+
+Explain:
+- the repository is created or stored on GitHub
+- **clone** means making a local copy of that repository on your computer
+- the cloned folder is still connected to the GitHub remote
+- you work locally in VS Code
+- Git tracks changes locally
+- **push** sends committed changes back to GitHub
+
+### Visual
+
+```text
+GitHub repository
+       ↓ clone
+Local repository in VS Code
+       ↓ edit / agent work
+      Git
+       ↓ commit + push
+GitHub repository
+```
+
+### CCE 2026 example
+
+Repository:
+`https://github.com/nimdvir/cce-2026`
+
+Use the saved prompt in `presentation/prompts.md` to have the local agent clone or safely update the repository before working.
 
 ---
 
@@ -884,7 +916,6 @@ Show:
 
 ```text
 cce-2026/
-├── reference/
 ├── presentation/
 ├── live/
 ├── docs/
@@ -898,9 +929,11 @@ cce-2026/
 ```text
 Idea
  ↓
-Repository
+GitHub Repository
+ ↓ clone
+Local VS Code Workspace
  ↓
-Reference Material
+Presentation Source Material
  ↓
 Agent
  ↓
