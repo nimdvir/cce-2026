@@ -3,6 +3,7 @@
 The concepts behind the session, written for faculty with no technical background. Each section opens with one sentence on why it matters for academic work.
 
 [Brain](#brain) · [Infrastructure](#infrastructure) · [Setup](#setup) · [Task](#task) · [Workflow](#workflow) · [Beyond Copilot](#beyond) · [Responsible Use](#responsible-use)
+{: .section-menu }
 
 ## Part I: 🧠 The Brain {#brain}
 
@@ -82,7 +83,7 @@ GitHub Copilot is the AI layer inside the VS Code workspace. It has several part
 VS Code + Your Files + Copilot = Agentic Workspace
 ```
 
-Copilot is free for verified faculty and students through GitHub Education (see [Setup](#setup)).
+Verified teachers and students can get Copilot through GitHub Education at no cost. Eligibility and benefits change, so check the program's current terms (see [Setup](#setup)).
 
 ### Copilot Chat: Ask, Plan, Agent
 
@@ -136,7 +137,16 @@ Models differ in reasoning ability, speed, coding strength, multimodal support, 
 
 ### Which models are out there?
 
-The main model families, kept short. Names change every few months, so check the date below.
+What actually differs between models, in plain words:
+
+- **Open weights vs. closed.** Open-weight models (Llama, DeepSeek, Qwen, GLM, MiMo) can be downloaded and run on your own hardware or a university server. Closed models (GPT, Claude, Gemini) are used through the maker's service.
+- **Where your data goes.** A closed model sends your text to the provider's servers; a local open-weight model keeps it on your machine. This matters for student data and unpublished research.
+- **Reasoning vs. speed.** Some models "think" longer and are better at multi-step tasks; others answer fast and cheaply. Many families offer both.
+- **Context size.** How much material fits in one conversation.
+- **Cost.** Varies by provider, model, and how you run it. Open weights are not automatically free: running locally needs hardware; hosted services charge per token or by subscription.
+- **Availability inside Copilot.** Copilot's model picker offers a subset (GPT, Claude, Gemini, and others); other models can be used with your own API key or a local runner such as Ollama (see [Beyond Copilot](#beyond)).
+
+The main model families, kept short, as a reference. Names change every few months, so check the date below.
 
 | Family | Maker | Where from | Notes |
 |---|---|---|---|
@@ -154,15 +164,6 @@ The main model families, kept short. Names change every few months, so check the
 
 *Last checked: TODO* <!-- TODO: verify family names and makers, then replace with the check date -->
 
-What actually differs between them, in plain words:
-
-- **Open weights vs. closed.** Open-weight models (Llama, DeepSeek, Qwen, GLM, MiMo) can be downloaded and run on your own hardware or a university server. Closed models (GPT, Claude, Gemini) are used through the maker's service.
-- **Where your data goes.** A closed model sends your text to the provider's servers; a local open-weight model keeps it on your machine. This matters for student data and unpublished research.
-- **Reasoning vs. speed.** Some models "think" longer and are better at multi-step tasks; others answer fast and cheaply. Many families offer both.
-- **Context size.** How much material fits in one conversation.
-- **Cost.** From free (local) to premium (largest closed models). Chinese open-weight models pushed prices down sharply.
-- **Availability inside Copilot.** Copilot's model picker offers a subset (GPT, Claude, Gemini, and others); other models can be used with your own API key or a local runner such as Ollama (see [Beyond Copilot](#beyond)).
-
 > **Models are interchangeable brains. The workflow you learn today does not depend on which one you pick.**
 
 ### What are tokens?
@@ -176,7 +177,7 @@ Everything counts. The prompt uses tokens. The documents you attach use tokens. 
 Why faculty should care:
 
 - **Context limits.** A model can hold only so many tokens at once.
-- **Long documents.** A whole textbook may not fit; a chapter will.
+- **Long documents.** A very long source can fill most of the window and crowd out everything else. Give the agent the chapter, not the textbook.
 - **API pricing.** When you pay per use, you pay per token.
 - **Unnecessary context.** Extra material costs tokens and can distract the model.
 - **Efficiency.** Give the agent what it needs, not everything you have.
@@ -210,6 +211,18 @@ Read the original: [Introduction to agent-first development](https://code.visual
 
 **Why it matters:** an agent works on files in a project. The tools in this section are how you give it a project.
 
+### Introduction: the key elements in one sentence each
+
+- **Text editor** — a program that edits plain-text files directly.
+- **VS Code** — a text editor that grew into a full project workspace.
+- **Repository** — a project folder whose history Git tracks.
+- **Git** — the tool that records, compares, and restores changes.
+- **GitHub** — a website that stores repositories online.
+- **Clone** — a local copy of a GitHub repository, still connected to the original.
+- **Extensions** — apps that add features to VS Code; Copilot is one.
+
+The rest of Part II explains each of these, in this order.
+
 ### What is a text editor?
 
 A text editor is a program for writing and changing plain-text files. Notepad is one. VS Code is one.
@@ -238,7 +251,7 @@ You do not need to become a software engineer. VS Code is useful because most ac
 
 ### What files can it work on?
 
-Short answer: **all of them.** VS Code opens any file, and an agent can read most formats, including PDF, Word, and Excel.
+Short answer: **it depends on the file and the tools.** VS Code opens almost any file, but an agent works most reliably with plain text. PDF, Word, and Excel files may need a built-in tool, an extension, or a conversion step before the agent can read or edit them dependably.
 
 Preferred answer: **simple text.** Plain-text files (`.md`, `.txt`, `.csv`, `.html`, `.py`) are the ones an agent can inspect, edit precisely, and Git can track line by line. A Word document is a sealed box; a Markdown file is an open page.
 
@@ -303,7 +316,7 @@ GitHub repository
 
 You can ask an agent to do the clone for you. This is the exact prompt used for this project. It is saved as [`clone-repository.prompt.md`](https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/clone-repository.prompt.md) in the repository, and it appears again on the [Examples page](examples.html#this-website).
 
-```text
+```prompt
 I want to work locally on the CCE 2026 repository:
 
 https://github.com/nimdvir/cce-2026
@@ -384,7 +397,7 @@ GOAL + CONTEXT + CONSTRAINTS = TASK
 
 That worked example is, almost word for word, the prompt for Demo 1. Here it is as it is saved in the repository, in [`update-syllabus.prompt.md`](https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/update-syllabus.prompt.md):
 
-```text
+```prompt
 The course files are in live/syllabus/.
 
 Update the course for Spring 2027 without changing grading weights. Identify inconsistent dates and flag anything requiring judgment.
@@ -478,7 +491,7 @@ Prompt:      "Do this now."
 AGENTS.md:   "Always work this way in this project."
 ```
 
-`AGENTS.md` is a plain-text file at the top of a project. Agents read it before they work. Example rules:
+`AGENTS.md` is a plain-text file at the top of a project. Agents that support it, including Copilot, find it on their own and follow it before they work. Some agents also have an instruction file of their own; Claude, for example, reads `CLAUDE.md` the same way. Example rules:
 
 - don't invent facts
 - inspect existing files first
@@ -497,7 +510,7 @@ Examples: semester updates, feedback analysis, course sites, grading.
 
 In VS Code, a saved prompt is a small file in the `.github/prompts/` folder whose name ends in `.prompt.md`. The top of the file says what the prompt is for. The rest is the prompt. This is the Demo 1 prompt from Part III, now saved as a file:
 
-```text
+```prompt
 ---
 mode: agent
 description: Demo 1. Update the fictional course in live/syllabus/ for Spring 2027. Use Plan mode first, then Agent.
@@ -551,7 +564,7 @@ Commit before an agent task. Review the diff after. Revert if needed.
 **Why it matters:** Copilot is the environment used today, but the "brain" can be swapped, and the same workflow carries over. These are alternatives and additions, not prerequisites.
 
 - **Models and model selection** — Copilot's model picker lets you choose among available models. They behave differently: quality vs. speed vs. cost. Match the model to the task. Some models also let you set a thinking effort, from low (fast, simple fixes) to high (deep reasoning, multi-file work).
-- **Other agents in VS Code** — Claude (Anthropic), Codex (OpenAI), other AI extensions and specialized coding agents. They read the same `AGENTS.md`.
+- **Other agents in VS Code** — Claude (Anthropic), Codex (OpenAI), other AI extensions and specialized coding agents. Most of them read `AGENTS.md` too, and some add an instruction file of their own (Claude reads `CLAUDE.md`). Check the agent's documentation before assuming one file serves them all.
 - **Bring your own key** — Copilot and other tools can use a model from another provider (for example DeepSeek, Qwen, MiMo, or a local model) with an API key.
 - **What is an API?** — "An API lets one piece of software communicate with another service." Keys, cost, permissions, and security all come with it. **Never publish an API key in a repository.**
 

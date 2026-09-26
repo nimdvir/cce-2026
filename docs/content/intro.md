@@ -17,6 +17,7 @@ Cengage Computing Experience 2026 · Trends and Emerging Technologies in Computi
 - [Start the Lecture](lecture.html)
 - [Download Slides](assets/slides.pdf) <!-- TODO: docs/assets/slides.pdf does not exist yet; it is exported from the deck in plan-claude.md, Step 16 -->
 - [GitHub Repository](https://github.com/nimdvir/cce-2026)
+{: .buttons }
 
 <!-- LIVE BANNER. Demo 0 edits the single line below. Keep it one line so the change is obvious on screen. Leave the {: .live-banner } tag; the stylesheet uses it. -->
 🔴 Live from CCE 2026 — *this line will change during the session.*

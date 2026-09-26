@@ -3,10 +3,15 @@
 Every demo from the session, with the exact prompt, the input files, what to watch for, and the result, so you can reproduce it later. Resources and contact are at the bottom.
 
 [This website](#this-website) · [Syllabus](#syllabus) · [Course site](#course-site) · [Data](#data) · [Grading](#grading) · [More uses](#more-uses) · [What to try first](#try-first) · [Resources](#resources)
+{: .section-menu }
 
 Each example uses the same layout: **Inputs · Prompt (copyable) · Mode (Ask / Plan / Agent) · What to watch for · Output · Clip**.
 
 ## Example 1 — How I built this website (Demo 0, live) {#this-website}
+
+```text
+outlines + prompts + template → AGENT → this website
+```
 
 **The finished product:** the site you are reading.
 
@@ -40,7 +45,10 @@ This example has three prompts, in the order they were used. Each one is saved a
 
 **Prompt 1 (the clone step):** gets the repository onto a computer before any work starts. Saved as [`clone-repository.prompt.md`](https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/clone-repository.prompt.md).
 
-```text
+<details markdown="1">
+<summary>View the full prompt</summary>
+
+```prompt
 I want to work locally on the CCE 2026 repository:
 
 https://github.com/nimdvir/cce-2026
@@ -60,9 +68,14 @@ Do not create, edit, delete, commit, or push project files yet. This task is onl
 When finished, report the local folder path, current branch, Git status, and whether it is synchronized with GitHub.
 ```
 
+</details>
+
 **Prompt 2 (writing the pages):** the prompt that produced the four Markdown pages you are reading. It was given the site outline and the other planning files in `presentation/`. Saved as [`write-site-content.prompt.md`](https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/write-site-content.prompt.md).
 
-```text
+<details markdown="1">
+<summary>View the full prompt</summary>
+
+```prompt
 Write the four Markdown source files for the CCE 2026 website in `docs/content/`:
 `intro.md`, `lecture.md`, `explanation.md`, `examples.md`.
 
@@ -125,12 +138,14 @@ When finished, report:
 - every TODO placeholder you left, by file and section
 ```
 
+</details>
+
 Notice the shape: one goal, one authoritative source, a list of other sources with a rule for each, explicit boundaries, and a report to check the work against. That is Part III's checklist in practice.
 
 **Prompt 3 (the live moment):** edits the banner on the Intro page, then commits and pushes. Saved as [`update-live-banner.prompt.md`](https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/update-live-banner.prompt.md).
 
 <!-- TODO: drafted, not yet run. Confirm the wording before the session. -->
-```text
+```prompt
 In docs/content/intro.md, find the line marked LIVE BANNER and replace the text after the red dot with a short greeting to the CCE 2026 audience. Keep it one line. Rebuild the site with python docs/build.py, then commit with the message "Update live banner" and push to main.
 ```
 
@@ -148,11 +163,15 @@ In docs/content/intro.md, find the line marked LIVE BANNER and replace the text 
 
 ## Example 2 — Update a syllabus (Demo 1, live) {#syllabus}
 
+```text
+4 course files with inconsistent dates → AGENT → updated files + flagged decisions
+```
+
 **Inputs:** `live/syllabus/` — syllabus, schedule, policies, and assignments for a fictional course, with a few deliberately inconsistent dates.
 
 **Prompt:** saved as [`update-syllabus.prompt.md`](https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/update-syllabus.prompt.md). In Copilot Chat, type `/update-syllabus`.
 
-```text
+```prompt
 The course files are in live/syllabus/.
 
 Update the course for Spring 2027 without changing grading weights. Identify inconsistent dates and flag anything requiring judgment.
@@ -168,12 +187,16 @@ Update the course for Spring 2027 without changing grading weights. Identify inc
 
 ## Example 3 — Turn a syllabus into an interactive course website {#course-site}
 
+```text
+syllabus + schedule + policies + assignments → AGENT → six-page course website
+```
+
 **Inputs:** the same course material as Example 2.
 
 **Prompt:** saved as [`build-course-site.prompt.md`](https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/build-course-site.prompt.md). In Copilot Chat, type `/build-course-site`.
 
 <!-- TODO: drafted, not yet run. Confirm the wording before the session. -->
-```text
+```prompt
 Using only the files in live/syllabus/, build a simple course website in live/generated/course-site/ with these pages: homepage, weekly schedule, assignments, grading, policies, and resources. Plain HTML and CSS, no frameworks. Do not invent any dates, policies, or grading weights that are not in the source files. Make it readable on a phone.
 ```
 
@@ -189,6 +212,10 @@ Using only the files in live/syllabus/, build a simple course website in live/ge
 
 ## Example 4 — Data analysis (Demo 2, live) {#data}
 
+```text
+student-feedback.csv → AGENT → chart + interpretation
+```
+
 **Input:** `live/data/student-feedback.csv` (synthetic).
 
 **Workflow:**
@@ -199,7 +226,7 @@ CSV → Inspect → Analyze → Visualize → Interpret → Publish
 
 **Prompt:** saved as [`analyze-feedback.prompt.md`](https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/analyze-feedback.prompt.md). In Copilot Chat, type `/analyze-feedback`.
 
-```text
+```prompt
 The file is live/data/student-feedback.csv.
 
 Inspect this feedback file, summarize the main patterns by section and week, create one clear chart, and write a short interpretation. Do not invent data.
@@ -215,6 +242,10 @@ Inspect this feedback file, summarize the main patterns by section and week, cre
 
 ## Example 5 — Grading and repetitive work (recorded) {#grading}
 
+```text
+rubric + 3 submissions → AGENT → one structured result per submission
+```
+
 **Inputs:** `live/grading/` — assignment, rubric, three synthetic submissions.
 
 **Workflow:**
@@ -228,7 +259,7 @@ inspect submission → apply rubric → identify evidence → calculate score �
 **Prompt:** saved as [`grade-submission.prompt.md`](https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/grade-submission.prompt.md). In Copilot Chat, type `/grade-submission`.
 
 <!-- TODO: drafted, not yet run. Confirm the wording once the skill exists. -->
-```text
+```prompt
 Use the grade-submission skill. Grade every file in live/grading/submissions/ against live/grading/rubric.md for the assignment in live/grading/assignment.md. For each submission, write the score, the rubric evidence, and draft feedback to live/generated/grading/. Do not change the rubric.
 ```
 

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Examples · CCE 2026</title>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<nav class="site-nav" aria-label="Site">
+<a href="index.html">Intro</a>
+<a href="lecture.html">Lecture</a>
+<a href="explanation.html">Explanation</a>
+<a href="examples.html" class="current" aria-current="page">Examples</a>
+</nav>
+</header>
+<main id="main" class="page">
+<h1 id="examples">Examples</h1>
+<p>Every demo from the session, with the exact prompt, the input files, what to watch for, and the result, so you can reproduce it later. Resources and contact are at the bottom.</p>
+<p class="section-menu"><a href="#this-website">This website</a> · <a href="#syllabus">Syllabus</a> · <a href="#course-site">Course site</a> · <a href="#data">Data</a> · <a href="#grading">Grading</a> · <a href="#more-uses">More uses</a> · <a href="#try-first">What to try first</a> · <a href="#resources">Resources</a></p>
+<p>Each example uses the same layout: <strong>Inputs · Prompt (copyable) · Mode (Ask / Plan / Agent) · What to watch for · Output · Clip</strong>.</p>
+<h2 id="this-website">Example 1 — How I built this website (Demo 0, live)</h2>
+<pre class="diagram"><code class="language-text">outlines + prompts + template → AGENT → this website
+</code></pre>
+<p><strong>The finished product:</strong> the site you are reading.</p>
+<p><strong>Inputs (source materials):</strong> Cengage template · official session description · lecture outlines · saved prompts · headshot.</p>
+<p><strong>Repository tree:</strong></p>
+<pre class="diagram"><code class="language-text">cce-2026/
+├── presentation/   outlines, plans, prompts, slides
+├── docs/           this website (Markdown source → HTML)
+├── live/           demo material
+├── assets/images/
+├── AGENTS.md
+└── README.md
+</code></pre>
+<p><strong>What is GitHub Pages?</strong> GitHub can publish a folder of a repository as a public website, free, with no server to manage. This site lives in the <code>docs/</code> folder of the repository; GitHub Pages serves that folder.</p>
+<pre class="diagram"><code class="language-text">VS Code → Git → GitHub repository → GitHub Pages → this website
+</code></pre>
+<p><strong>Process:</strong></p>
+<pre class="diagram"><code class="language-text">Idea → GitHub repository → clone → VS Code → agent work → commit + push → GitHub Pages → website
+</code></pre>
+<p>This example has three prompts, in the order they were used. Each one is saved as a file in <a href="https://github.com/nimdvir/cce-2026/tree/main/.github/prompts"><code>.github/prompts/</code></a> so you can run it yourself.</p>
+<p><strong>Prompt 1 (the clone step):</strong> gets the repository onto a computer before any work starts. Saved as <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/clone-repository.prompt.md"><code>clone-repository.prompt.md</code></a>.</p>
+<details>
+<summary>View the full prompt</summary>
+<div class="prompt-box">
+<div class="prompt-bar"><span class="prompt-label">Prompt</span></div>
+<pre class="prompt"><code class="language-prompt">I want to work locally on the CCE 2026 repository:
+
+https://github.com/nimdvir/cce-2026
+
+Clone it into my normal local GitHub workspace as `cce-2026` if it is not already present.
+
+If the repository already exists locally, **do not overwrite or discard any local work**. First inspect the repository and run `git status`. If there are uncommitted changes, stop and tell me what you found before pulling anything. If the working tree is clean, fetch from `origin` and update the local `main` branch using a safe fast-forward-only pull.
+
+Verify before finishing:
+- the remote `origin` points to `https://github.com/nimdvir/cce-2026`
+- the current branch is `main`
+- the local branch is up to date with `origin/main`
+- the repository opens correctly as the VS Code workspace
+
+Do not create, edit, delete, commit, or push project files yet. This task is only to get the repository safely available locally and ready for work.
+
+When finished, report the local folder path, current branch, Git status, and whether it is synchronized with GitHub.
+</code></pre>
+</div>
+</details>
+<p><strong>Prompt 2 (writing the pages):</strong> the prompt that produced the four Markdown pages you are reading. It was given the site outline and the other planning files in <code>presentation/</code>. Saved as <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/write-site-content.prompt.md"><code>write-site-content.prompt.md</code></a>.</p>
+<details>
+<summary>View the full prompt</summary>
+<div class="prompt-box">
+<div class="prompt-bar"><span class="prompt-label">Prompt</span></div>
+<pre class="prompt"><code class="language-prompt">Write the four Markdown source files for the CCE 2026 website in `docs/content/`:
+`intro.md`, `lecture.md`, `explanation.md`, `examples.md`.
+
+Primary spec: `presentation/site-outline-claude.md`. Follow its page order,
+section order, headings, anchors, boxed quotes, visuals, and content rules
+exactly. Every `####` heading in the outline becomes a section in the
+corresponding file. Give each H2 in `explanation.md` an explicit id
+(`brain`, `infrastructure`, `setup`, `task`, `workflow`, `beyond`, `responsible-use`).
+
+Before writing, read these files and check whether they contribute anything
+the outline does not already cover:
+
+- `presentation/lecture-outline-detailed.md`
+- `presentation/lecture-outline-summary.md`
+- `presentation/plan-gpt.md`
+- `presentation/official-session-description.md` (read-only; quote, never edit)
+- `presentation/prompts.md`
+- `presentation/plan-claude.md`
+- `presentation/Introduction to agent-first development.html` (third-party
+  VS Code article; use only for the five-pillars mapping and correct
+  Copilot terminology)
+
+For each of those files, decide one of three things:
+
+1. Already covered by the outline: use the outline's wording.
+2. Adds a useful detail, example, quote, or link that fits under an existing
+   outline section: include it there, and note it in your final report.
+3. Adds something that does not fit under Brain, Infrastructure, Task,
+   Workflow, or Examples: leave it out, and list it in your final report
+   so I can decide.
+
+Do not add sections the outline does not have. Do not reorder it.
+
+Writing rules:
+
+- Audience is faculty with no technical background. Every section must read
+  cold. One idea per paragraph. Short sentences.
+- Where the outline gives a definition or boxed quote, use that wording
+  verbatim; the slides will reuse it.
+- Where the outline says &quot;visual&quot;, write it as a fenced text block for now;
+  the build step will style it later.
+- Every prompt mentioned on the Examples page appears verbatim in a fenced
+  block so it can be copied.
+- Use real facts only from the files above. Where the outline leaves a
+  placeholder (short URL, QR image, slides PDF, screenshots, clip slots,
+  the &quot;why agents&quot; sentences in About Me, the model table's &quot;last checked&quot;
+  date), keep a clearly marked TODO rather than inventing content.
+- The model table in the Brain section: keep the families and the
+  &quot;what differs&quot; list from the outline, omit version numbers, and add a
+  &quot;Last checked: TODO&quot; line.
+- End each page with a &quot;Next →&quot; link as specified in the outline.
+- Do not create HTML, CSS, or the build script. Do not edit any file
+  outside `docs/content/`. Do not commit or push.
+
+When finished, report:
+
+- the four files written and their approximate word counts
+- which items from the other files were merged in, and where
+- which items were left out, and why
+- every TODO placeholder you left, by file and section
+</code></pre>
+</div>
+</details>
+<p>Notice the shape: one goal, one authoritative source, a list of other sources with a rule for each, explicit boundaries, and a report to check the work against. That is Part III's checklist in practice.</p>
+<p><strong>Prompt 3 (the live moment):</strong> edits the banner on the Intro page, then commits and pushes. Saved as <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/update-live-banner.prompt.md"><code>update-live-banner.prompt.md</code></a>.</p>
+
+<div class="prompt-box">
+<div class="prompt-bar"><span class="prompt-label">Prompt</span></div>
+<pre class="prompt"><code class="language-prompt">In docs/content/intro.md, find the line marked LIVE BANNER and replace the text after the red dot with a short greeting to the CCE 2026 audience. Keep it one line. Rebuild the site with python docs/build.py, then commit with the message &quot;Update live banner&quot; and push to main.
+</code></pre>
+</div>
+<p><strong>Mode:</strong> Agent.</p>
+<p><strong>What to watch for:</strong> the agent edits one Markdown file, rebuilds the HTML, commits, and pushes. Then everyone refreshes the Intro page.</p>
+<p><strong>Output:</strong> a changed line on the <a href="index.html">Intro page</a>.</p>
+<p><strong>Clip:</strong> </p>
+<p><strong>Lesson:</strong> content lives in Markdown; a small script renders it; Git and Pages publish it. Nothing here needed a web developer.</p>
+<p><strong>Take it with you.</strong> This repository is the example. The text of every page is in <a href="https://github.com/nimdvir/cce-2026/tree/main/docs/content"><code>docs/content/</code></a> as plain Markdown. Every prompt used to build it and to run the demos is a file in <a href="https://github.com/nimdvir/cce-2026/tree/main/.github/prompts"><code>.github/prompts/</code></a>, indexed in <a href="https://github.com/nimdvir/cce-2026/blob/main/presentation/prompts.md"><code>presentation/prompts.md</code></a>. The standing rules the agents followed are in <a href="https://github.com/nimdvir/cce-2026/blob/main/AGENTS.md"><code>AGENTS.md</code></a>. Clone or fork the repository, open it in VS Code, and use it as the starting point for your own project.</p>
+<h2 id="syllabus">Example 2 — Update a syllabus (Demo 1, live)</h2>
+<pre class="diagram"><code class="language-text">4 course files with inconsistent dates → AGENT → updated files + flagged decisions
+</code></pre>
+<p><strong>Inputs:</strong> <code>live/syllabus/</code> — syllabus, schedule, policies, and assignments for a fictional course, with a few deliberately inconsistent dates.</p>
+<p><strong>Prompt:</strong> saved as <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/update-syllabus.prompt.md"><code>update-syllabus.prompt.md</code></a>. In Copilot Chat, type <code>/update-syllabus</code>.</p>
+<div class="prompt-box">
+<div class="prompt-bar"><span class="prompt-label">Prompt</span></div>
+<pre class="prompt"><code class="language-prompt">The course files are in live/syllabus/.
+
+Update the course for Spring 2027 without changing grading weights. Identify inconsistent dates and flag anything requiring judgment.
+</code></pre>
+</div>
+<p><strong>Mode:</strong> Plan first, then Agent.</p>
+<p><strong>What to watch for:</strong> the agent reads all four files, proposes changes, edits several files, and the diff shows exactly what moved.</p>
+<p><strong>Output:</strong> updated files plus a short list of flagged items. A reference copy of the expected result is kept in <code>live/generated/expected/syllabus/</code>.</p>
+<p><strong>Clip:</strong> </p>
+<h2 id="course-site">Example 3 — Turn a syllabus into an interactive course website</h2>
+<pre class="diagram"><code class="language-text">syllabus + schedule + policies + assignments → AGENT → six-page course website
+</code></pre>
+<p><strong>Inputs:</strong> the same course material as Example 2.</p>
+<p><strong>Prompt:</strong> saved as <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/build-course-site.prompt.md"><code>build-course-site.prompt.md</code></a>. In Copilot Chat, type <code>/build-course-site</code>.</p>
+
+<div class="prompt-box">
+<div class="prompt-bar"><span class="prompt-label">Prompt</span></div>
+<pre class="prompt"><code class="language-prompt">Using only the files in live/syllabus/, build a simple course website in live/generated/course-site/ with these pages: homepage, weekly schedule, assignments, grading, policies, and resources. Plain HTML and CSS, no frameworks. Do not invent any dates, policies, or grading weights that are not in the source files. Make it readable on a phone.
+</code></pre>
+</div>
+<p><strong>Mode:</strong> Agent.</p>
+<p><strong>What to watch for:</strong> one set of source files becomes six linked pages, and nothing on those pages is new information.</p>
+<p><strong>Output:</strong> homepage · weekly schedule · assignments · grading · policies · resources.</p>
+<p><strong>Clip:</strong> shown as screenshots or a short clip, not live. </p>
+<p><strong>Lesson:</strong> one set of source information can support multiple outputs.</p>
+<h2 id="data">Example 4 — Data analysis (Demo 2, live)</h2>
+<pre class="diagram"><code class="language-text">student-feedback.csv → AGENT → chart + interpretation
+</code></pre>
+<p><strong>Input:</strong> <code>live/data/student-feedback.csv</code> (synthetic).</p>
+<p><strong>Workflow:</strong></p>
+<pre class="diagram"><code class="language-text">CSV → Inspect → Analyze → Visualize → Interpret → Publish
+</code></pre>
+<p><strong>Prompt:</strong> saved as <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/analyze-feedback.prompt.md"><code>analyze-feedback.prompt.md</code></a>. In Copilot Chat, type <code>/analyze-feedback</code>.</p>
+<div class="prompt-box">
+<div class="prompt-bar"><span class="prompt-label">Prompt</span></div>
+<pre class="prompt"><code class="language-prompt">The file is live/data/student-feedback.csv.
+
+Inspect this feedback file, summarize the main patterns by section and week, create one clear chart, and write a short interpretation. Do not invent data.
+</code></pre>
+</div>
+<p><strong>Mode:</strong> Agent.</p>
+<p><strong>What to watch for:</strong> the agent looks at the columns before analyzing; runs Python; produces a chart; writes an interpretation; adds it to a report page.</p>
+<p><strong>Output:</strong> chart image + summary. A reference copy of the expected result is kept in <code>live/generated/expected/data/</code>.</p>
+<p><strong>Clip:</strong> </p>
+<h2 id="grading">Example 5 — Grading and repetitive work (recorded)</h2>
+<pre class="diagram"><code class="language-text">rubric + 3 submissions → AGENT → one structured result per submission
+</code></pre>
+<p><strong>Inputs:</strong> <code>live/grading/</code> — assignment, rubric, three synthetic submissions.</p>
+<p><strong>Workflow:</strong></p>
+<pre class="diagram"><code class="language-text">inspect submission → apply rubric → identify evidence → calculate score → draft feedback → output structured results
+</code></pre>
+<p><strong>The skill:</strong> <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/skills/grade-submission/SKILL.md"><code>.github/skills/grade-submission/SKILL.md</code></a>. It standardizes the procedure, the rubric conventions, and the output format, so every submission is graded the same way.</p>
+<p><strong>Prompt:</strong> saved as <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/grade-submission.prompt.md"><code>grade-submission.prompt.md</code></a>. In Copilot Chat, type <code>/grade-submission</code>.</p>
+
+<div class="prompt-box">
+<div class="prompt-bar"><span class="prompt-label">Prompt</span></div>
+<pre class="prompt"><code class="language-prompt">Use the grade-submission skill. Grade every file in live/grading/submissions/ against live/grading/rubric.md for the assignment in live/grading/assignment.md. For each submission, write the score, the rubric evidence, and draft feedback to live/generated/grading/. Do not change the rubric.
+</code></pre>
+</div>
+<p><strong>Mode:</strong> Agent.</p>
+<p><strong>What to watch for:</strong> the same steps repeat for each submission, and the output has the same structure every time.</p>
+<p><strong>Output:</strong> one structured result per submission.</p>
+<p><strong>Clip:</strong> 20–30 second accelerated recording. </p>
+<blockquote>
+<p><strong>One submission can be a prompt. A hundred submissions require a workflow.</strong></p>
+</blockquote>
+<p>Doing it once is a prompt. Doing it reliably every semester is a workflow.</p>
+<h2 id="more-uses">Example 6 — Other academic uses</h2>
+<p>No demos here, just a gallery of where the same approach applies.</p>
+<ul>
+<li><strong>Course redesign</strong> — restructure a course from its existing files.</li>
+<li><strong>Lecture materials</strong> — draft slides and handouts from notes.</li>
+<li><strong>Research coding</strong> — apply a codebook to interview transcripts.</li>
+<li><strong>Literature organization</strong> — sort and summarize a folder of papers.</li>
+<li><strong>Document conversion</strong> — Word to Markdown, Markdown to PDF.</li>
+<li><strong>Data cleaning</strong> — fix headers, blanks, and mistyped cells.</li>
+<li><strong>Website maintenance</strong> — update dates and links across a course site.</li>
+<li><strong>Administrative tasks</strong> — reports and forms from the same source files.</li>
+<li><strong>Repetitive file processing</strong> — the same change across many files.</li>
+<li><strong>Documentation</strong> — write up how a project works.</li>
+</ul>
+<h2 id="try-first">What should you try first?</h2>
+<ol>
+<li>Open a real project folder in VS Code.</li>
+<li>Ask Copilot to inspect it.</li>
+<li>Give it a multi-file task.</li>
+<li>Create an <code>AGENTS.md</code>.</li>
+<li>Turn something repetitive into a reusable workflow.</li>
+</ol>
+<h2 id="resources">Resources</h2>
+<p><strong>Downloads</strong></p>
+<ul>
+<li>Slides (PDF): <a href="assets/slides.pdf">assets/slides.pdf</a> </li>
+<li>This repository: <a href="https://github.com/nimdvir/cce-2026">github.com/nimdvir/cce-2026</a></li>
+<li>Saved prompts: <a href="https://github.com/nimdvir/cce-2026/tree/main/.github/prompts">.github/prompts/</a>, one file per prompt, with an index in <a href="https://github.com/nimdvir/cce-2026/blob/main/presentation/prompts.md">presentation/prompts.md</a></li>
+<li>Example files: <a href="https://github.com/nimdvir/cce-2026/tree/main/live">live/</a></li>
+<li>Setup guide: <a href="explanation.html#setup">Setup</a></li>
+</ul>
+<p><strong>GitHub</strong></p>
+<ul>
+<li>GitHub Education: TODO </li>
+<li>GitHub Copilot setup: <a href="https://code.visualstudio.com/docs/setup/copilot">Set up GitHub Copilot in VS Code</a></li>
+<li>VS Code download: <a href="https://code.visualstudio.com/download">code.visualstudio.com/download</a></li>
+<li>Copilot documentation: <a href="https://code.visualstudio.com/docs/chat/chat-overview">Copilot Chat overview</a></li>
+<li>VS Code agent guides: <a href="https://code.visualstudio.com/learn/foundations/introduction-to-agent-first-development">Introduction to agent-first development</a> · <a href="https://code.visualstudio.com/learn/foundations/reviewing-and-controlling-agent-changes">Reviewing and controlling agent changes</a> · <a href="https://code.visualstudio.com/learn/agents/1-using-tools-with-agents">Using tools with agents</a></li>
+</ul>
+<p><strong>Beyond Copilot</strong></p>
+<ul>
+<li>Model documentation: <a href="https://docs.github.com/copilot/using-github-copilot/ai-models/changing-the-ai-model-for-copilot-chat">Changing the AI model for Copilot Chat</a></li>
+<li>Claude: TODO </li>
+<li>Codex: TODO </li>
+<li>Other agents in VS Code: <a href="https://code.visualstudio.com/learn/agents/4-using-third-party-agents-in-vs-code">Using third-party agents in VS Code</a></li>
+<li>APIs: TODO </li>
+<li>MCP: <a href="https://code.visualstudio.com/learn/agents/2-extending-agents-with-mcp-servers">Extending agents with MCP servers</a></li>
+<li>Extensions: <a href="https://code.visualstudio.com/learn/agents/3-agent-plugins">Agent plugins</a></li>
+</ul>
+<p><strong>Media</strong></p>
+<ul>
+<li>Demo recordings, clips, and screenshots will be added here as they are produced. </li>
+</ul>
+<h2 id="contact">Contact</h2>
+<p>Nim Dvir · University at Albany · <a href="https://nimdvir.com">nimdvir.com</a> · <a href="https://linkedin.com/in/nimdvir/">LinkedIn</a> · <a href="https://github.com/nimdvir">GitHub</a></p>
+<p><img alt="QR code linking to this website" src="assets/images/qr-site.png"></p>
+
+<p><strong>Short URL:</strong> TODO </p>
+<hr>
+<p class="next"><strong>Next →</strong> <a href="index.html">Back to the start</a></p>
+
+</main>
+<footer class="site-footer">
+<p>AI Agents in VS Code for Academic Work · CCE 2026 · Nim Dvir</p>
+<p><a href="https://github.com/nimdvir/cce-2026">github.com/nimdvir/cce-2026</a></p>
+<p>Built with AI agents in VS Code.</p>
+</footer>
+</body>
+</html>
