@@ -5,8 +5,9 @@
 **Nim Dvir, PhD, MBA** · University at Albany, Massry School of Business
 
 Cengage Computing Experience 2026 · Trends and Emerging Technologies in Computing Education
+{: .event-line }
 
-![Nim Dvir](assets/images/headshot2025-cloud.jpg)
+![Nim Dvir](assets/images/headshot-crop.jpg)
 
 ![QR code linking to this website](assets/images/qr-site.png)
 

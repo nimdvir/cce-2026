@@ -113,12 +113,21 @@
   }
 }
 
+/* One full pass: pause, type, hold, erase. The tagline loops it forever. */
 @keyframes typing {
-  from {
+  0%,
+  6% {
     width: 0;
   }
-  to {
+  51% {
     width: 27ch;
+  }
+  78% {
+    width: 27ch;
+  }
+  88%,
+  100% {
+    width: 0;
   }
 }
 
@@ -169,6 +178,26 @@
   }
   50% {
     box-shadow: 0 0 0 14px rgba(255, 60, 70, 0), var(--shadow-lg);
+  }
+}
+
+/* Heartbeat: two quick thumps, then rest. */
+@keyframes event-beat {
+  0%,
+  100% {
+    scale: 1;
+  }
+  12% {
+    scale: 1.05;
+  }
+  24% {
+    scale: 1;
+  }
+  36% {
+    scale: 1.05;
+  }
+  48% {
+    scale: 1;
   }
 }
 
@@ -482,8 +511,8 @@ li::marker {
   padding-right: 0.12em;
   color: var(--text);
   animation:
-    typing 2.2s steps(27, end) 0.5s both,
-    caret 0.75s step-end 0.5s 14 forwards;
+    typing 8s steps(27, end) 0.8s infinite both,
+    caret 0.75s step-end 0.8s infinite;
 }
 
 /* Live banner (Demo 0 edits this line) ---------------------------------- */
@@ -515,6 +544,31 @@ li::marker {
 
 .live-banner em {
   font-weight: 400;
+}
+
+/* Event line (Intro): colour-shifting, gently beating. ------------------- */
+
+.page > .event-line {
+  font-weight: 800;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    var(--grad-a),
+    var(--grad-b),
+    var(--grad-c),
+    var(--grad-d),
+    var(--grad-a)
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 14px var(--glow-b));
+  animation:
+    rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both,
+    shimmer 6s linear infinite,
+    event-beat 2.8s ease-in-out infinite;
 }
 
 /* Quotes: key ideas and definitions ------------------------------------- */
@@ -860,8 +914,8 @@ img {
   box-shadow: var(--shadow);
 }
 
-img[src$="headshot2025-cloud.jpg"] {
-  width: 13rem;
+img[src$="headshot-crop.jpg"] {
+  width: 15rem;
   border-radius: 1.25rem;
   padding: 4px;
   background: linear-gradient(135deg, var(--grad-a), var(--grad-b), var(--grad-c));
@@ -869,7 +923,7 @@ img[src$="headshot2025-cloud.jpg"] {
 }
 
 img[src$="qr-site.png"] {
-  width: min(100%, 22rem);
+  width: min(100%, 17rem);
   padding: 0.75rem;
   background: #ffffff;
   box-shadow: var(--shadow-lg);
