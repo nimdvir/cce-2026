@@ -9,10 +9,8 @@ Cengage Computing Experience 2026 · Trends and Emerging Technologies in Computi
 ![Nim Dvir](assets/images/headshot2025-cloud.jpg)
 
 ![QR code linking to this website](assets/images/qr-site.png)
-<!-- TODO: generate assets/images/qr-site.png once the site URL is final, and copy it into docs/assets/images/ -->
 
-**Short URL:** TODO
-<!-- TODO: short URL not chosen yet (nimdvir.com redirect vs. nimdvir.github.io/cce-2026). See plan-claude.md, Open items. -->
+**Short URL:** [spoo.me/cHzhyF2](https://spoo.me/cHzhyF2)
 
 - [Start the Lecture](lecture.html)
 - [Download Slides](assets/slides.pdf) <!-- TODO: docs/assets/slides.pdf does not exist yet; it is exported from the deck in plan-claude.md, Step 16 -->
