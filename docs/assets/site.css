@@ -571,6 +571,35 @@ li::marker {
     event-beat 2.8s ease-in-out infinite;
 }
 
+/* Marker highlight: a hand-swiped highlighter stripe. -------------------- */
+
+.marker {
+  padding: 0.14em 0.42em 0.2em;
+  margin: 0 0.12em;
+  border-radius: 0.5em 0.22em 0.45em 0.18em / 0.28em 0.5em 0.22em 0.45em;
+  background-image:
+    linear-gradient(
+      86deg,
+      rgba(255, 238, 95, 0.35) 2%,
+      rgba(255, 238, 95, 0) 62%
+    ),
+    linear-gradient(
+      97deg,
+      rgba(255, 222, 60, 0.18) 0%,
+      rgba(255, 218, 45, 0.95) 3%,
+      rgba(255, 216, 40, 0.88) 50%,
+      rgba(255, 212, 32, 0.92) 90%,
+      rgba(255, 204, 15, 0.45) 98%,
+      rgba(255, 204, 15, 0.1) 100%
+    );
+  background-size: 100% 80%;
+  background-position: 0 60%;
+  background-repeat: no-repeat;
+  color: #33290a;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
 /* Quotes: key ideas and definitions ------------------------------------- */
 
 blockquote {
