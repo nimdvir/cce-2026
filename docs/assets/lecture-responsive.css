@@ -1,0 +1,97 @@
+/* Responsive lecture-only enhancements.
+   Loaded after agent-theme.css so these rules intentionally override
+   the original width-based typewriter animation on narrow screens. */
+
+.page > .lecture-command {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 0.7rem;
+  row-gap: 0.3rem;
+  align-items: start;
+}
+
+.lecture-command::before {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.lecture-command-type-slot {
+  grid-column: 2;
+  grid-row: 1;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+
+.lecture-command-type {
+  display: inline;
+  width: auto;
+  max-width: none;
+  overflow: visible;
+  white-space: normal;
+  border: 0;
+  padding: 0;
+  animation: none;
+}
+
+.lecture-command-type::after {
+  content: "";
+  display: inline-block;
+  width: 0.1em;
+  height: 1.05em;
+  margin-left: 0.08em;
+  vertical-align: -0.12em;
+  border-radius: 1px;
+  background: var(--agent-teal);
+  box-shadow: 0 0 8px var(--agent-glow);
+  animation: lecture-command-caret 0.75s step-end infinite;
+}
+
+.lecture-command-static {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 48em) {
+  .page > .lecture-command {
+    grid-template-columns: auto 33ch minmax(0, 1fr);
+    align-items: baseline;
+  }
+
+  .lecture-command-type-slot {
+    grid-column: 2;
+    grid-row: 1;
+    width: 33ch;
+  }
+
+  .lecture-command-type {
+    white-space: nowrap;
+  }
+
+  .lecture-command-static {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 30em) {
+  .page > .lecture-command {
+    padding: 0.85rem 0.9rem;
+    font-size: 0.78rem;
+  }
+
+  .lecture-command-static strong,
+  .lecture-command-static a {
+    display: inline;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lecture-command-type::after {
+    animation: none;
+    opacity: 0;
+  }
+}
