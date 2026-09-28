@@ -55,7 +55,7 @@ body.page-intro .page > h1 {
 }
 
 .page > .lecture-agent-art {
-  width: min(58rem, calc(100vw - 2 * var(--gutter)));
+  width: min(700px, calc(100vw - 2 * var(--gutter)));
   max-width: none;
   aspect-ratio: 720 / 212;
   margin: 1rem auto 0;
@@ -122,5 +122,91 @@ body.page-intro .page > h1 {
   .page > .lecture-command {
     margin-top: -0.35rem;
     font-size: 0.82rem;
+  }
+}
+
+
+/* Lecture access command: type only the prompt prefix; keep destination fixed. */
+@keyframes lecture-command-typing {
+  0%, 6% { width: 0; }
+  55%, 80% { width: 33ch; }
+  94%, 100% { width: 0; }
+}
+
+@keyframes lecture-command-caret {
+  0%, 49% { border-color: var(--agent-teal); }
+  50%, 100% { border-color: transparent; }
+}
+
+.lecture-command-type-slot {
+  display: inline-block;
+  flex: 0 0 33ch;
+  width: 33ch;
+  min-width: 33ch;
+  overflow: hidden;
+}
+
+.lecture-command-type {
+  display: inline-block;
+  box-sizing: content-box;
+  width: 0;
+  max-width: 33ch;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 0.13em solid var(--agent-teal);
+  padding-right: 0.1em;
+  animation:
+    lecture-command-typing 6.5s steps(33, end) 0.45s infinite both,
+    lecture-command-caret 0.75s step-end 0.45s infinite;
+}
+
+.lecture-command-static {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.page > .lecture-qr {
+  max-width: none;
+  margin: 1rem auto 2rem;
+  text-align: center;
+}
+
+.lecture-qr a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.lecture-qr img {
+  width: min(11rem, 52vw);
+  margin: 0 auto;
+  padding: 0.55rem;
+  background: #fff;
+  border-radius: 0.85rem;
+  box-shadow:
+    0 14px 34px -20px rgba(0, 0, 0, 0.65),
+    0 0 24px -14px var(--agent-glow);
+}
+
+@media (max-width: 700px) {
+  .page > .lecture-command {
+    flex-wrap: wrap;
+  }
+
+  .lecture-command-type-slot {
+    flex-basis: 100%;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .lecture-command-static {
+    flex-basis: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lecture-command-type {
+    width: 33ch;
+    border-right-color: transparent;
+    animation: none;
   }
 }
