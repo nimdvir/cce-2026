@@ -3,7 +3,7 @@
 <div class="lecture-agent-art" role="img" aria-label="A playful group of AI agent mascots representing different kinds of AI agents."></div>
 
 <div class="lecture-command" role="note" aria-label="Full lecture web address">
-  <span class="lecture-command-type-slot"><span class="lecture-command-type">to access this full lecture go to</span></span>
+  <span class="lecture-command-type-slot"><span class="lecture-command-type" data-text="to access this full lecture go to">to access this full lecture go to</span></span>
   <span class="lecture-command-static"><strong>AI Agents in VS Code for Academic Work · CCE 2026</strong> - <a href="https://spoo.me/cHzhyF2">https://spoo.me/cHzhyF2</a></span>
 </div>
 
@@ -15,16 +15,18 @@
 
 ## What are we doing today?
 
-This session moves from *what an agent is* to *how to work with one reliably*, in five parts.
-
-**What did I promise Cengage?** A hands-on session that moves faculty from setting up GitHub, VS Code, and Copilot to using AI agents for practical academic work: updating a syllabus, building a course website, analyzing data, and grading, and then turning those one-off prompts into reusable instructions, skills, and workflows.
-
 <details markdown="1">
 <summary>Read the official session description</summary>
 
 > This hands-on session introduces faculty and academic professionals to using AI agents inside GitHub Copilot in Visual Studio Code to streamline everyday academic work. Participants will learn how to sign up for GitHub, install VS Code, activate GitHub Copilot, and access available AI agent features. The session will demonstrate how AI agents can support practical academic workflows, including updating a syllabus, building a simple course website, conducting data analysis, and assisting with automatic grading workflows. Beyond one-time prompting, the session will emphasize how faculty can create reusable instructions, skills, and structured workflows for repeated academic tasks. The goal is to help participants move from casual AI use to more systematic, reliable, and repeatable AI-assisted academic productivity.
 
 </details>
+
+This session moves from *what an agent is* to *how to work with one reliably*, in five parts.
+
+**What did I promise Cengage?** A hands-on session that moves faculty from setting up GitHub, VS Code, and Copilot to using AI agents for practical academic work: updating a syllabus, building a course website, analyzing data, and grading, and then turning those one-off prompts into reusable instructions, skills, and workflows.
+
+
 
 The five-part map is the shape of the whole session and of this site:
 
