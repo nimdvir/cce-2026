@@ -1,5 +1,35 @@
 /* CCE 2026 site script. Dependency-free. Every page works without it. */
 (function () {
+  function loadAgentTheme() {
+    if (document.querySelector('link[data-agent-theme]')) return;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'assets/agent-theme.css';
+    link.setAttribute('data-agent-theme', '');
+    document.head.appendChild(link);
+  }
+
+  function styleIntroTitle() {
+    var current = document.querySelector('.site-nav a.current');
+    if (!current || current.getAttribute('href') !== 'index.html') return;
+
+    document.body.classList.add('page-intro');
+    var heading = document.querySelector('.page > h1');
+    if (!heading || heading.querySelector('.agent-title-neon')) return;
+
+    var prefix = 'AI Agents';
+    var text = heading.textContent || '';
+    if (text.indexOf(prefix) !== 0) return;
+
+    heading.textContent = '';
+    var accent = document.createElement('span');
+    accent.className = 'agent-title-neon';
+    accent.textContent = prefix;
+    heading.appendChild(accent);
+    heading.appendChild(document.createTextNode(text.slice(prefix.length)));
+  }
+
+  loadAgentTheme();
   "use strict";
 
   var root = document.documentElement;
@@ -116,6 +146,7 @@
   }
 
   function init() {
+    styleIntroTitle();
     addCopyButtons();
     addThemeToggle();
   }

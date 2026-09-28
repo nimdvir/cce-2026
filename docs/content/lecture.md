@@ -1,5 +1,9 @@
 # The Lecture
 
+<div class="lecture-agent-art" role="img" aria-label="A playful group of AI agent mascots representing different kinds of AI agents."></div>
+
+<div class="lecture-command" role="note" aria-label="Full lecture web address"><span>to access this full lecture go to <strong>AI Agents in VS Code for Academic Work · CCE 2026</strong> - <a href="https://spoo.me/cHzhyF2">https://spoo.me/cHzhyF2</a></span></div>
+
 ## What are we doing today?
 
 This session moves from *what an agent is* to *how to work with one reliably*, in five parts.
