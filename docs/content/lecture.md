@@ -2,7 +2,16 @@
 
 <div class="lecture-agent-art" role="img" aria-label="A playful group of AI agent mascots representing different kinds of AI agents."></div>
 
-<div class="lecture-command" role="note" aria-label="Full lecture web address"><span>to access this full lecture go to <strong>AI Agents in VS Code for Academic Work · CCE 2026</strong> - <a href="https://spoo.me/cHzhyF2">https://spoo.me/cHzhyF2</a></span></div>
+<div class="lecture-command" role="note" aria-label="Full lecture web address">
+  <span class="lecture-command-type-slot"><span class="lecture-command-type">to access this full lecture go to</span></span>
+  <span class="lecture-command-static"><strong>AI Agents in VS Code for Academic Work · CCE 2026</strong> - <a href="https://spoo.me/cHzhyF2">https://spoo.me/cHzhyF2</a></span>
+</div>
+
+<div class="lecture-qr">
+  <a href="https://spoo.me/cHzhyF2" aria-label="Open the full CCE 2026 lecture">
+    <img src="assets/images/qr-site.png" alt="QR code linking to the full CCE 2026 lecture">
+  </a>
+</div>
 
 ## What are we doing today?
 
