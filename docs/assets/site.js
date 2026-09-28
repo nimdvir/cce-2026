@@ -1,12 +1,21 @@
 /* CCE 2026 site script. Dependency-free. Every page works without it. */
 (function () {
   function loadAgentTheme() {
-    if (document.querySelector('link[data-agent-theme]')) return;
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'assets/agent-theme.css';
-    link.setAttribute('data-agent-theme', '');
-    document.head.appendChild(link);
+    if (!document.querySelector('link[data-agent-theme]')) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'assets/agent-theme.css';
+      link.setAttribute('data-agent-theme', '');
+      document.head.appendChild(link);
+    }
+
+    if (!document.querySelector('link[data-lecture-responsive]')) {
+      var lectureLink = document.createElement('link');
+      lectureLink.rel = 'stylesheet';
+      lectureLink.href = 'assets/lecture-responsive.css';
+      lectureLink.setAttribute('data-lecture-responsive', '');
+      document.head.appendChild(lectureLink);
+    }
   }
 
   function styleIntroTitle() {
@@ -119,6 +128,54 @@
     });
   }
 
+  function animateLectureCommand() {
+    var typed = document.querySelector(".lecture-command-type");
+    if (!typed) {
+      return;
+    }
+
+    var fullText = typed.getAttribute("data-text") || typed.textContent.trim();
+    typed.setAttribute("data-text", fullText);
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      typed.textContent = fullText;
+      return;
+    }
+
+    var index = 0;
+    var deleting = false;
+    typed.textContent = "";
+
+    function tick() {
+      if (!deleting) {
+        index += 1;
+        typed.textContent = fullText.slice(0, index);
+
+        if (index >= fullText.length) {
+          deleting = true;
+          window.setTimeout(tick, 1300);
+          return;
+        }
+
+        window.setTimeout(tick, 58);
+        return;
+      }
+
+      index -= 1;
+      typed.textContent = fullText.slice(0, index);
+
+      if (index <= 0) {
+        deleting = false;
+        window.setTimeout(tick, 500);
+        return;
+      }
+
+      window.setTimeout(tick, 32);
+    }
+
+    window.setTimeout(tick, 450);
+  }
+
   function addThemeToggle() {
     var nav = document.querySelector(".site-nav");
     if (!nav) {
@@ -147,6 +204,7 @@
 
   function init() {
     styleIntroTitle();
+    animateLectureCommand();
     addCopyButtons();
     addThemeToggle();
   }
