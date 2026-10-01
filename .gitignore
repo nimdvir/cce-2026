@@ -1,6 +1,9 @@
 # Third-party reference material (kept locally, not distributed)
 presentation/Introduction to agent-first development.html
 
+# Raw course data never goes in this repository
+BITM330 Fall2026.csv
+
 # Office lock files
 ~$*.pptx
 ~$*.docx
@@ -11,20 +14,17 @@ presentation/Introduction to agent-first development.html
 Thumbs.db
 desktop.ini
 
-# Secrets — never commit API keys
+# Secrets: never commit API keys
 .env
 .env.*
 *.key
 *.pem
 
-# Demo outputs are regenerated live; only the expected fallbacks are tracked
-live/generated/*
-!live/generated/expected/
-
-# Raw recordings stay out of git (trimmed clips are added deliberately)
+# Raw recordings stay out of git
 *.mp4
 *.mov
 *.mkv
+*.m4a
 
 # Python
 __pycache__/
