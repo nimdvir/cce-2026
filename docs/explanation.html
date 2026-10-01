@@ -6,6 +6,7 @@
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
 <title>Explanation · CCE 2026</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/site.js"></script>
 </head>
@@ -17,27 +18,95 @@
 <a href="lecture.html">Lecture</a>
 <a href="explanation.html" class="current" aria-current="page">Explanation</a>
 <a href="examples.html">Examples</a>
+<a href="about.html">Stay in touch</a>
+<a class="nav-contact" href="mailto:ndvir@albany.edu" aria-label="Contact me by email"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span class="nav-contact-label">Contact me</span></a>
 </nav>
 </header>
 <main id="main" class="page">
 <h1 id="explanation">Explanation</h1>
-<p>The concepts behind the session, written for faculty with no technical background. Each section opens with one sentence on why it matters for academic work.</p>
-<p class="section-menu"><a href="#brain">Brain</a> · <a href="#infrastructure">Infrastructure</a> · <a href="#setup">Setup</a> · <a href="#task">Task</a> · <a href="#workflow">Workflow</a> · <a href="#beyond">Beyond Copilot</a> · <a href="#responsible-use">Responsible Use</a></p>
-<h2 id="brain">Part I: 🧠 The Brain</h2>
-<p><strong>Why it matters:</strong> you cannot direct something well if you do not know what is doing the thinking.</p>
-<h3 id="introduction-the-key-elements-in-one-sentence-each">Introduction: the key elements in one sentence each</h3>
-<p>These are the terms you will meet in this part. Read them once now, so they feel familiar when they are explained.</p>
+<p>The ideas behind the session, written for faculty with no technical background. Each part starts with what's in it and why you should care.</p>
+<p class="section-menu"><a href="#brain">1. Brain</a> · <a href="#infrastructure">2. Infrastructure</a> · <a href="#task">3. Task</a> · <a href="#workflow">4. Workflow</a> · <a href="examples.html">5. Examples</a></p>
+<nav aria-label="Table of contents" class="toc">
+<p><strong>Contents</strong></p>
 <ul>
-<li><strong>Agent</strong> — AI that works toward a goal in steps, using tools, instead of only answering.</li>
-<li><strong>Chat</strong> — the conversation window you type into; it is the interface, not the agent.</li>
-<li><strong>Model</strong> — the AI "brain" that reasons and writes; agents are built around one.</li>
-<li><strong>Tokens</strong> — the small pieces of text a model reads and writes; they set limits and cost.</li>
-<li><strong>Context</strong> — everything the model can see right now: your prompt, the conversation, files, instructions, results.</li>
-<li><strong>Tools</strong> — the actions an agent can take: read, search, edit, run, fetch.</li>
-<li><strong>GitHub Copilot</strong> — the AI layer inside VS Code that we use today to run agents on our own files.</li>
+<li><a href="#brain">Part 1: 🧠 The Brain</a><ul>
+<li><a href="#what-is-an-ai-agent">1.1 What is an AI agent?</a></li>
+<li><a href="#chat-vs-agent">1.2 Chat vs. agent</a></li>
+<li><a href="#where-can-you-run-models-and-agents">1.3 Where can you run models and agents?</a></li>
+<li><a href="#what-can-an-agent-do">1.4 What can an agent do?</a></li>
+<li><a href="#what-is-a-model">1.5 What is a model?</a></li>
+<li><a href="#which-models-are-out-there">1.6 Which models are out there?</a></li>
+<li><a href="#what-are-tokens">1.7 What are tokens?</a></li>
+<li><a href="#what-is-context">1.8 What is context?</a></li>
+<li><a href="#the-five-pillars-bridge-to-the-vs-code-docs">1.9 The five pillars (bridge to the VS Code docs)</a></li>
 </ul>
-<p>The rest of Part I explains each of these, in this order.</p>
-<h3 id="what-is-an-ai-agent">What is an AI agent?</h3>
+</li>
+<li><a href="#infrastructure">Part 2: 🖥️ The Infrastructure</a><ul>
+<li><a href="#what-is-a-text-editor">2.1 What is a text editor?</a></li>
+<li><a href="#what-is-vs-code">2.2 What is VS Code?</a></li>
+<li><a href="#where-do-the-files-live">2.3 Where do the files live?</a></li>
+<li><a href="#what-files-can-it-work-on">2.4 What files can it work on?</a></li>
+<li><a href="#what-is-a-repository">2.5 What is a repository?</a></li>
+<li><a href="#what-is-git">2.6 What is Git?</a></li>
+<li><a href="#what-is-github">2.7 What is GitHub?</a></li>
+<li><a href="#clone-github-vs-code">2.8 Clone: GitHub → VS Code</a></li>
+<li><a href="#what-is-github-copilot">2.9 What is GitHub Copilot?</a></li>
+<li><a href="#copilot-chat-ask-plan-agent">2.10 Copilot Chat: Ask, Plan, Agent</a></li>
+<li><a href="#what-are-extensions">2.11 What are extensions?</a></li>
+<li><a href="#setup">2.12 Setup guide (do this before or after the session)</a></li>
+<li><a href="#beyond">2.13 Beyond Copilot: models, other agents, MCP</a></li>
+</ul>
+</li>
+<li><a href="#task">Part 3: 🎯 The Task</a><ul>
+<li><a href="#what-makes-a-good-agent-task">3.1 What makes a good agent task?</a></li>
+<li><a href="#prompting-agents">3.2 Prompting agents</a></li>
+<li><a href="#context-instead-of-giant-prompts">3.3 Context instead of giant prompts</a></li>
+</ul>
+</li>
+<li><a href="#workflow">Part 4: 🔄 The Workflow</a><ul>
+<li><a href="#a-reliable-agent-workflow">4.1 A reliable agent workflow</a></li>
+<li><a href="#reviewing-agent-work">4.2 Reviewing agent work</a></li>
+<li><a href="#what-is-a-workspace">4.3 What is a workspace?</a></li>
+<li><a href="#what-is-agentsmd">4.4 What is <code>AGENTS.md</code>?</a></li>
+<li><a href="#reusable-prompts">4.5 Reusable prompts</a></li>
+<li><a href="#skills">4.6 Skills</a></li>
+<li><a href="#from-prompt-to-workflow">4.7 From prompt to workflow</a></li>
+<li><a href="#git-in-the-workflow">4.8 Git in the workflow</a></li>
+<li><a href="#responsible-use">4.9 Agents: strengths, weaknesses, opportunities, threats (SWOT)</a></li>
+</ul>
+</li>
+<li><a href="examples.html">Part 5: 🚀 The Examples</a></li>
+</ul>
+</nav>
+<h2 id="brain">Part 1: 🧠 The Brain</h2>
+<h3 id="introduction-the-key-elements-in-one-sentence-each">What does this include?</h3>
+<p>These are the terms in this part. Read them once now, and they'll be familiar when we get to them.</p>
+<ul>
+<li><strong>Agent:</strong> AI that works toward a goal in steps, using tools, instead of only answering.</li>
+<li><strong>Chat:</strong> the conversation window you type into. It's the interface. It isn't the agent.</li>
+<li><strong>Model:</strong> the AI "brain" that reasons and writes. Every agent is built around one.</li>
+<li><strong>Tokens:</strong> the small pieces of text a model reads and writes. They set the limits and the cost.</li>
+<li><strong>Context:</strong> everything the model can see right now: your prompt, the conversation, files, instructions, results.</li>
+<li><strong>Tools:</strong> the actions an agent can take: read, search, edit, run, fetch.</li>
+</ul>
+<p>GitHub Copilot, the tool we use today to run agents on our own files, is explained in <a href="#what-is-github-copilot">Part 2</a>.</p>
+<h3 id="brain-why">Why does it matter?</h3>
+<p>It's hard to direct something if you don't know what's doing the thinking.</p>
+<nav aria-label="In Part 1" class="toc toc-part">
+<p><strong>In this part</strong></p>
+<ul>
+<li><a href="#what-is-an-ai-agent">1.1 What is an AI agent?</a></li>
+<li><a href="#chat-vs-agent">1.2 Chat vs. agent</a></li>
+<li><a href="#where-can-you-run-models-and-agents">1.3 Where can you run models and agents?</a></li>
+<li><a href="#what-can-an-agent-do">1.4 What can an agent do?</a></li>
+<li><a href="#what-is-a-model">1.5 What is a model?</a></li>
+<li><a href="#which-models-are-out-there">1.6 Which models are out there?</a></li>
+<li><a href="#what-are-tokens">1.7 What are tokens?</a></li>
+<li><a href="#what-is-context">1.8 What is context?</a></li>
+<li><a href="#the-five-pillars-bridge-to-the-vs-code-docs">1.9 The five pillars (bridge to the VS Code docs)</a></li>
+</ul>
+</nav>
+<h3 id="what-is-an-ai-agent">1.1 What is an AI agent?</h3>
 <blockquote>
 <p>An AI agent uses a model, context, instructions, and tools to work toward a goal through multiple steps.</p>
 </blockquote>
@@ -52,7 +121,7 @@
 <li>evaluate results</li>
 <li>continue until the goal is reached</li>
 </ul>
-<h3 id="chat-vs-agent">Chat vs. agent</h3>
+<h3 id="chat-vs-agent">1.2 Chat vs. agent</h3>
 <pre class="diagram"><code class="language-text">CHAT                                    AGENT
 You ask → AI answers → You do the work  You give a goal → AI examines → plans → acts → checks
 </code></pre>
@@ -62,61 +131,19 @@ You ask → AI answers → You do the work  You give a goal → AI examines → 
 <p><strong>Chat is the interface. An agent is a way the AI can operate.</strong></p>
 </blockquote>
 <p>You still use a chat window as your main interface. What happens behind that window can range from answering a question to taking agentic actions.</p>
-<h3 id="where-can-you-run-models-and-agents">Where can you run models and agents?</h3>
+<h3 id="where-can-you-run-models-and-agents">1.3 Where can you run models and agents?</h3>
 <p>The same model can be reached from many places.</p>
 <ul>
-<li><strong>A website chat</strong> — ChatGPT, Claude, Copilot on the web. You bring the material to the AI.</li>
-<li><strong>An app</strong> — desktop or mobile chat apps. Same idea, closer to your files.</li>
-<li><strong>Inside a tool you already use</strong> — Word, Excel, a browser, an email client.</li>
-<li><strong>Through an API</strong> — one program calling a model from another (more in <a href="#beyond">Beyond Copilot</a>).</li>
-<li><strong>Locally, on your own computer, inside your project</strong> — the AI works where your files are.</li>
+<li><strong>A website chat:</strong> ChatGPT, Claude, Copilot on the web. You bring the material to the AI.</li>
+<li><strong>An app:</strong> desktop or mobile chat apps. Same idea, closer to your files.</li>
+<li><strong>Inside a tool you already use:</strong> Word, Excel, a browser, an email client.</li>
+<li><strong>Through an API:</strong> one program calling a model from another (see <a href="#what-is-an-api">What is an API?</a>).</li>
+<li><strong>On your own computer, inside your project:</strong> the agent works where your files are.</li>
 </ul>
 <blockquote>
-<p><strong>In this session we run agents locally, inside a text editor, with GitHub Copilot.</strong> There are many other ways; this one puts the agent next to your files, where it can read them, edit them, and run commands on your machine. The editor itself is explained in Part II.</p>
+<p><strong>In this session the agent works on files on our own computer, inside a text editor, with GitHub Copilot.</strong> The agent reads and edits your files and runs commands on your machine. The model behind it usually runs on the provider's servers, so the text it reads is sent there. There are other ways to do this. We use this one because it puts the agent next to your files. The editor and Copilot are explained in <a href="#infrastructure">Part 2</a>.</p>
 </blockquote>
-<h3 id="what-is-github-copilot">What is GitHub Copilot?</h3>
-<p>GitHub Copilot is the AI layer inside the VS Code workspace. It has several parts:</p>
-<ul>
-<li><strong>Copilot Chat</strong> — the conversation panel where you talk to the agent.</li>
-<li><strong>Code suggestions</strong> — inline completions while you type (useful, but not the focus today).</li>
-<li><strong>Ask, Plan, Agent</strong> — three modes of the same chat panel, explained next.</li>
-<li><strong>Model selection</strong> — pick which model does the thinking.</li>
-<li><strong>Tools</strong> — the actions the agent can take in your workspace.</li>
-<li><strong>Project context</strong> — the agent can see your files and instructions.</li>
-</ul>
-<pre class="diagram"><code class="language-text">VS Code + Your Files + Copilot = Agentic Workspace
-</code></pre>
-<p>Verified teachers and students can get Copilot through GitHub Education at no cost. Eligibility and benefits change, so check the program's current terms (see <a href="#setup">Setup</a>).</p>
-<h3 id="copilot-chat-ask-plan-agent">Copilot Chat: Ask, Plan, Agent</h3>
-<p>The same chat panel works in three modes.</p>
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>Ask</th>
-<th>Plan</th>
-<th>Agent</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Understand, explain, answer questions, explore possibilities, troubleshoot conceptually.</td>
-<td>Inspect the problem, understand the project, propose a sequence of changes, identify affected files.</td>
-<td>Create and edit files, run commands, use tools, perform multi-step work.</td>
-</tr>
-<tr>
-<td>No edits, no commands.</td>
-<td>Waits for your approval before anything changes.</td>
-<td>Verifies and iterates until the task is done.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Copilot Chat is the interface. Ask, Plan, and Agent are different ways of using that interface.</p>
-<pre class="diagram"><code class="language-text">ASK → PLAN → AGENT → REVIEW
-</code></pre>
-<p>You will see this again in every demo.</p>
-<h3 id="what-can-an-agent-do">What can an agent do?</h3>
+<h3 id="what-can-an-agent-do">1.4 What can an agent do?</h3>
 <p><strong>An agent can:</strong></p>
 <ul>
 <li>read one or many files</li>
@@ -139,22 +166,22 @@ You ask → AI answers → You do the work  You give a goal → AI examines → 
 <li>decide what matters pedagogically without guidance</li>
 <li>replace human review</li>
 </ul>
-<h3 id="what-is-a-model">What is a model?</h3>
+<h3 id="what-is-a-model">1.5 What is a model?</h3>
 <pre class="diagram"><code class="language-text">MODEL = the reasoning and generation engine
 AGENT = model + context + instructions + tools + actions
 </code></pre>
 <p>Models differ in reasoning ability, speed, coding strength, multimodal support, context capacity, and cost.</p>
-<h3 id="which-models-are-out-there">Which models are out there?</h3>
-<p>What actually differs between models, in plain words:</p>
+<h3 id="which-models-are-out-there">1.6 Which models are out there?</h3>
+<p>How models differ, in plain words:</p>
 <ul>
 <li><strong>Open weights vs. closed.</strong> Open-weight models (Llama, DeepSeek, Qwen, GLM, MiMo) can be downloaded and run on your own hardware or a university server. Closed models (GPT, Claude, Gemini) are used through the maker's service.</li>
-<li><strong>Where your data goes.</strong> A closed model sends your text to the provider's servers; a local open-weight model keeps it on your machine. This matters for student data and unpublished research.</li>
-<li><strong>Reasoning vs. speed.</strong> Some models "think" longer and are better at multi-step tasks; others answer fast and cheaply. Many families offer both.</li>
+<li><strong>Where your data goes.</strong> A closed model sends your text to the provider's servers. A model running on your own machine does not. Even then, check what else the agent is connected to, because a tool or extension can still send data out. This matters for student data and unpublished research.</li>
+<li><strong>Reasoning vs. speed.</strong> Some models "think" longer and are better at multi-step tasks. Others answer fast and cheaply. Many families offer both.</li>
 <li><strong>Context size.</strong> How much material fits in one conversation.</li>
-<li><strong>Cost.</strong> Varies by provider, model, and how you run it. Open weights are not automatically free: running locally needs hardware; hosted services charge per token or by subscription.</li>
-<li><strong>Availability inside Copilot.</strong> Copilot's model picker offers a subset (GPT, Claude, Gemini, and others); other models can be used with your own API key or a local runner such as Ollama (see <a href="#beyond">Beyond Copilot</a>).</li>
+<li><strong>Cost.</strong> Varies by provider, model, and how you run it. Open weights are not automatically free. Running a model yourself needs hardware, and hosted services charge per token or by subscription.</li>
+<li><strong>Availability inside Copilot.</strong> Copilot's model picker offers some of them (GPT, Claude, Gemini, and others). You can add other models with your own API key or a local runner such as Ollama (see <a href="#add-models">Optional: add models to VS Code Chat</a>).</li>
 </ul>
-<p>The main model families, kept short, as a reference. Names change every few months, so check the date below.</p>
+<p>The main model families, as a short reference. Names change every few months, so check the date below.</p>
 <div class="table-wrap">
 <table>
 <thead>
@@ -170,49 +197,49 @@ AGENT = model + context + instructions + tools + actions
 <td>GPT</td>
 <td>OpenAI</td>
 <td>US</td>
-<td>Default in ChatGPT and in many Copilot plans; strong all-rounder</td>
+<td>Default in ChatGPT and in many Copilot plans. Strong all-rounder</td>
 </tr>
 <tr>
 <td>Claude</td>
 <td>Anthropic</td>
 <td>US</td>
-<td>Strong at long documents, writing, and agentic coding; the "Claude" cameo in this session</td>
+<td>Strong at long documents, writing, and agentic coding. It makes a cameo in this session</td>
 </tr>
 <tr>
 <td>Gemini</td>
 <td>Google</td>
 <td>US</td>
-<td>Very large context, strong multimodal; built into Google Workspace</td>
+<td>Very large context, strong multimodal. Built into Google Workspace</td>
 </tr>
 <tr>
 <td>Llama</td>
 <td>Meta</td>
 <td>US</td>
-<td>Open weights; you can download and run it yourself</td>
+<td>Open weights. You can download and run it yourself</td>
 </tr>
 <tr>
 <td>Mistral</td>
 <td>Mistral AI</td>
 <td>France</td>
-<td>Open and hosted models; popular in Europe</td>
+<td>Open and hosted models. Popular in Europe</td>
 </tr>
 <tr>
 <td>Grok</td>
 <td>xAI</td>
 <td>US</td>
-<td>Tied to X; available by API</td>
+<td>Tied to X. Available by API</td>
 </tr>
 <tr>
 <td>DeepSeek</td>
 <td>DeepSeek</td>
 <td>China</td>
-<td>Open weights; very low cost; strong reasoning models</td>
+<td>Open weights, very low cost, strong reasoning models</td>
 </tr>
 <tr>
 <td>Qwen</td>
 <td>Alibaba</td>
 <td>China</td>
-<td>Open weights, many sizes, strong coding; widely used locally</td>
+<td>Open weights, many sizes, strong coding. Widely used locally</td>
 </tr>
 <tr>
 <td>Kimi</td>
@@ -235,11 +262,11 @@ AGENT = model + context + instructions + tools + actions
 </tbody>
 </table>
 </div>
-<p><em>Last checked: TODO</em> </p>
+<p><em>Last checked: September 30, 2026.</em></p>
 <blockquote>
 <p><strong>Models are interchangeable brains. The workflow you learn today does not depend on which one you pick.</strong></p>
 </blockquote>
-<h3 id="what-are-tokens">What are tokens?</h3>
+<h3 id="what-are-tokens">1.7 What are tokens?</h3>
 <p>Models do not read words. They process text in small units called tokens.</p>
 <p>Tokens are not exactly words. A short word may be one token. A long word may be several.</p>
 <p>Everything counts. The prompt uses tokens. The documents you attach use tokens. The conversation history uses tokens. The answer uses tokens.</p>
@@ -251,7 +278,7 @@ AGENT = model + context + instructions + tools + actions
 <li><strong>Unnecessary context.</strong> Extra material costs tokens and can distract the model.</li>
 <li><strong>Efficiency.</strong> Give the agent what it needs, not everything you have.</li>
 </ul>
-<h3 id="what-is-context">What is context?</h3>
+<h3 id="what-is-context">1.8 What is context?</h3>
 <pre class="diagram"><code class="language-text">Prompt + Conversation + Files + Instructions + Tool results = CONTEXT
 </code></pre>
 <ul>
@@ -263,7 +290,7 @@ AGENT = model + context + instructions + tools + actions
 <blockquote>
 <p><strong>Don't keep explaining the project. Put the project where the agent can understand it.</strong></p>
 </blockquote>
-<h3 id="the-five-pillars-bridge-to-the-vs-code-docs">The five pillars (bridge to the VS Code docs)</h3>
+<h3 id="the-five-pillars-bridge-to-the-vs-code-docs">1.9 The five pillars (bridge to the VS Code docs)</h3>
 <p>VS Code's own guide describes five pillars of good agent results: harness, model, context, tools, and prompt. This table maps this lecture's words to those terms.</p>
 <div class="table-wrap">
 <table>
@@ -294,44 +321,64 @@ AGENT = model + context + instructions + tools + actions
 </table>
 </div>
 <p>Read the original: <a href="https://code.visualstudio.com/learn/foundations/introduction-to-agent-first-development">Introduction to agent-first development</a> on code.visualstudio.com.</p>
-<h2 id="infrastructure">Part II: 🖥️ The Infrastructure</h2>
-<p><strong>Why it matters:</strong> an agent works on files in a project. The tools in this section are how you give it a project.</p>
-<h3 id="introduction-the-key-elements-in-one-sentence-each_1">Introduction: the key elements in one sentence each</h3>
+<h2 id="infrastructure">Part 2: 🖥️ The Infrastructure</h2>
+<h3 id="introduction-the-key-elements-in-one-sentence-each_1">What does this include?</h3>
 <ul>
-<li><strong>Text editor</strong> — a program that edits plain-text files directly.</li>
-<li><strong>VS Code</strong> — a text editor that grew into a full project workspace.</li>
-<li><strong>Repository</strong> — a project folder whose history Git tracks.</li>
-<li><strong>Git</strong> — the tool that records, compares, and restores changes.</li>
-<li><strong>GitHub</strong> — a website that stores repositories online.</li>
-<li><strong>Clone</strong> — a local copy of a GitHub repository, still connected to the original.</li>
-<li><strong>Extensions</strong> — apps that add features to VS Code; Copilot is one.</li>
+<li><strong>Text editor:</strong> a program that edits plain-text files directly.</li>
+<li><strong>VS Code:</strong> a text editor that grew into a full project workspace.</li>
+<li><strong>Repository:</strong> a project folder whose history Git tracks.</li>
+<li><strong>Git:</strong> the tool that records, compares, and restores changes.</li>
+<li><strong>GitHub:</strong> a website that stores repositories online.</li>
+<li><strong>Clone:</strong> a local copy of a GitHub repository, still connected to the original.</li>
+<li><strong>GitHub Copilot:</strong> the AI layer inside VS Code that we use today to run agents on our own files.</li>
+<li><strong>Extensions:</strong> apps that add features to VS Code. Copilot is one.</li>
+<li><strong>Setup guide:</strong> the steps to install all of this, plus how to add more models and what an API is.</li>
 </ul>
-<p>The rest of Part II explains each of these, in this order.</p>
-<h3 id="what-is-a-text-editor">What is a text editor?</h3>
+<h3 id="infrastructure-why">Why does it matter?</h3>
+<p>An agent works on files in a project. The tools in this part are how you give it a project.</p>
+<nav aria-label="In Part 2" class="toc toc-part">
+<p><strong>In this part</strong></p>
+<ul>
+<li><a href="#what-is-a-text-editor">2.1 What is a text editor?</a></li>
+<li><a href="#what-is-vs-code">2.2 What is VS Code?</a></li>
+<li><a href="#where-do-the-files-live">2.3 Where do the files live?</a></li>
+<li><a href="#what-files-can-it-work-on">2.4 What files can it work on?</a></li>
+<li><a href="#what-is-a-repository">2.5 What is a repository?</a></li>
+<li><a href="#what-is-git">2.6 What is Git?</a></li>
+<li><a href="#what-is-github">2.7 What is GitHub?</a></li>
+<li><a href="#clone-github-vs-code">2.8 Clone: GitHub → VS Code</a></li>
+<li><a href="#what-is-github-copilot">2.9 What is GitHub Copilot?</a></li>
+<li><a href="#copilot-chat-ask-plan-agent">2.10 Copilot Chat: Ask, Plan, Agent</a></li>
+<li><a href="#what-are-extensions">2.11 What are extensions?</a></li>
+<li><a href="#setup">2.12 Setup guide (do this before or after the session)</a></li>
+<li><a href="#beyond">2.13 Beyond Copilot: models, other agents, MCP</a></li>
+</ul>
+</nav>
+<h3 id="what-is-a-text-editor">2.1 What is a text editor?</h3>
 <p>A text editor is a program for writing and changing plain-text files. Notepad is one. VS Code is one.</p>
 <p>Unlike Word, a text editor edits the file directly. It does not hide the structure inside a document format.</p>
 <p>Text-based file types: <code>.txt</code> <code>.md</code> <code>.html</code> <code>.css</code> <code>.js</code> <code>.py</code> <code>.json</code> <code>.csv</code></p>
 <p>Why it matters for agents: agents can inspect and directly modify these files.</p>
-<h3 id="what-is-vs-code">What is VS Code?</h3>
+<h3 id="what-is-vs-code">2.2 What is VS Code?</h3>
 <blockquote>
 <p><strong>A text editor that has evolved into a complete project workspace.</strong></p>
 </blockquote>
 <pre class="diagram"><code class="language-text">VS CODE = Files · Editor · Terminal · Git · Extensions · AI Agents
 </code></pre>
 <p>You do not need to become a software engineer. VS Code is useful because most academic work can be represented as files in a project.</p>
-<h3 id="where-do-the-files-live">Where do the files live?</h3>
+<h3 id="where-do-the-files-live">2.3 Where do the files live?</h3>
 <ul>
-<li><strong>A local folder</strong> — the normal case. You open a folder on your computer and VS Code treats it as the project. The agent reads and writes inside that folder.</li>
-<li><strong>A synced cloud folder</strong> — a OneDrive, Google Drive, or Dropbox folder works the same way, because it is still a folder on your computer that happens to sync. Useful for keeping course material in one place; watch out for sync conflicts while an agent is editing.</li>
-<li><strong>A repository</strong> — a folder whose history Git tracks and GitHub backs up. This is what the rest of this section is about.</li>
+<li><strong>A local folder:</strong> the normal case. You open a folder on your computer and VS Code treats it as the project. The agent reads and writes inside that folder.</li>
+<li><strong>A synced cloud folder:</strong> a OneDrive, Google Drive, or Dropbox folder works the same way, because it is still a folder on your computer that happens to sync. It's handy for keeping course material in one place. Watch out for sync conflicts while an agent is editing.</li>
+<li><strong>A repository:</strong> a folder whose history Git tracks and GitHub backs up. This is what the rest of this section is about.</li>
 </ul>
-<h3 id="what-files-can-it-work-on">What files can it work on?</h3>
+<h3 id="what-files-can-it-work-on">2.4 What files can it work on?</h3>
 <p>Short answer: <strong>it depends on the file and the tools.</strong> VS Code opens almost any file, but an agent works most reliably with plain text. PDF, Word, and Excel files may need a built-in tool, an extension, or a conversion step before the agent can read or edit them dependably.</p>
-<p>Preferred answer: <strong>simple text.</strong> Plain-text files (<code>.md</code>, <code>.txt</code>, <code>.csv</code>, <code>.html</code>, <code>.py</code>) are the ones an agent can inspect, edit precisely, and Git can track line by line. A Word document is a sealed box; a Markdown file is an open page.</p>
+<p>Preferred answer: <strong>simple text.</strong> Plain-text files (<code>.md</code>, <code>.txt</code>, <code>.csv</code>, <code>.html</code>, <code>.py</code>) are the ones an agent can inspect, edit precisely, and Git can track line by line. A Word document is a sealed box. A Markdown file is an open page.</p>
 <blockquote>
 <p><strong>If you can, keep the source in plain text. Export to Word or PDF at the end.</strong></p>
 </blockquote>
-<h3 id="what-is-a-repository">What is a repository?</h3>
+<h3 id="what-is-a-repository">2.5 What is a repository?</h3>
 <blockquote>
 <p><strong>A repository is a project folder whose files and history are tracked with Git.</strong></p>
 </blockquote>
@@ -344,7 +391,7 @@ AGENT = model + context + instructions + tools + actions
 ├── website/
 └── AGENTS.md
 </code></pre>
-<h3 id="what-is-git">What is Git?</h3>
+<h3 id="what-is-git">2.6 What is Git?</h3>
 <p>Git is the tool that tracks a repository's history. In practice it:</p>
 <ul>
 <li>records changes</li>
@@ -355,7 +402,7 @@ AGENT = model + context + instructions + tools + actions
 <blockquote>
 <p><strong>When an agent can change many files, version control becomes especially valuable.</strong></p>
 </blockquote>
-<h3 id="what-is-github">What is GitHub?</h3>
+<h3 id="what-is-github">2.7 What is GitHub?</h3>
 <p>GitHub is a website that stores repositories. It:</p>
 <ul>
 <li>hosts repositories online</li>
@@ -365,7 +412,7 @@ AGENT = model + context + instructions + tools + actions
 <li>integrates with Copilot</li>
 <li>publishes websites</li>
 </ul>
-<h3 id="clone-github-vs-code">Clone: GitHub → VS Code</h3>
+<h3 id="clone-github-vs-code">2.8 Clone: GitHub → VS Code</h3>
 <pre class="diagram"><code class="language-text">GitHub repository
       ↓ clone
 Local repository in VS Code
@@ -377,7 +424,7 @@ GitHub repository
 <p><strong>Clone</strong> makes a local copy of a GitHub repository on your computer, still connected to the original.</p>
 <p><strong>Commit</strong> records a set of changes as a checkpoint in the local history.</p>
 <p><strong>Push</strong> sends your commits back up to GitHub.</p>
-<p>You can ask an agent to do the clone for you. This is the exact prompt used for this project. It is saved as <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/clone-repository.prompt.md"><code>clone-repository.prompt.md</code></a> in the repository, and it appears again on the <a href="examples.html#this-website">Examples page</a>.</p>
+<p>You can ask an agent to do the clone for you. This is the exact prompt used for this project. It is saved as <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/clone-repository.prompt.md"><code>clone-repository.prompt.md</code></a> in the repository. The <a href="examples.html#this-website">website example</a> on the Examples page has a walkthrough with the rest of the prompts.</p>
 <div class="prompt-box">
 <div class="prompt-bar"><span class="prompt-label">Prompt</span></div>
 <pre class="prompt"><code class="language-prompt">I want to work locally on the CCE 2026 repository:
@@ -400,53 +447,146 @@ Do not create, edit, delete, commit, or push project files yet. This task is onl
 When finished, report the local folder path, current branch, Git status, and whether it is synchronized with GitHub.
 </code></pre>
 </div>
-<p>Notice what the prompt does: it states the goal, names the exact repository, says what must not happen, asks the agent to inspect before acting, and asks for a report at the end. Part III explains why each of those matters.</p>
+<p>Notice what the prompt does: it states the goal, names the exact repository, says what must not happen, asks the agent to inspect before acting, and asks for a report at the end. <a href="#task">Part 3</a> explains why each of those matters.</p>
 <p>GitHub can also publish a repository as a website (GitHub Pages). This site is the example, explained on the <a href="examples.html#this-website">Examples page</a>.</p>
-<h3 id="copilot-in-the-workspace">Copilot in the workspace</h3>
-<p>GitHub Copilot was introduced in Part I. Here it is simply the AI layer of the workspace, installed as an extension. Extensions are explained next.</p>
-<h3 id="what-are-extensions">What are extensions?</h3>
+<h3 id="what-is-github-copilot">2.9 What is GitHub Copilot?</h3>
+<p><span id="copilot-in-the-workspace"></span></p>
+<p>GitHub Copilot is installed as an extension (extensions are explained in 2.11). It is the part of the workspace that runs the agent.</p>
+<p>GitHub Copilot is the AI layer inside the VS Code workspace. It has several parts:</p>
+<ul>
+<li><strong>Copilot Chat:</strong> the conversation panel where you talk to the agent.</li>
+<li><strong>Code suggestions:</strong> inline completions while you type (useful, but not the focus today).</li>
+<li><strong>Ask, Plan, Agent:</strong> three modes of the same chat panel, explained in 2.10.</li>
+<li><strong>Model selection:</strong> pick which model does the thinking.</li>
+<li><strong>Tools:</strong> the actions the agent can take in your workspace.</li>
+<li><strong>Project context:</strong> the agent can see your files and instructions.</li>
+</ul>
+<pre class="diagram"><code class="language-text">VS Code + Your Files + Copilot = Agentic Workspace
+</code></pre>
+<p>Verified teachers and students can get Copilot through GitHub Education at no cost. Eligibility and benefits change, so check the program's current terms (see the <a href="#setup">Setup guide</a>).</p>
+<h3 id="copilot-chat-ask-plan-agent">2.10 Copilot Chat: Ask, Plan, Agent</h3>
+<p>The same chat panel works in three modes.</p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Ask</th>
+<th>Plan</th>
+<th>Agent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Understand, explain, answer questions, explore possibilities, troubleshoot conceptually.</td>
+<td>Inspect the problem, understand the project, propose a sequence of changes, identify affected files.</td>
+<td>Create and edit files, run commands, use tools, perform multi-step work.</td>
+</tr>
+<tr>
+<td>No edits, no commands.</td>
+<td>Waits for your approval before anything changes.</td>
+<td>Verifies and iterates until the task is done.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Copilot Chat is the interface. Ask, Plan, and Agent are different ways of using that interface.</p>
+<pre class="diagram"><code class="language-text">ASK → PLAN → AGENT → REVIEW
+</code></pre>
+<p>You will see this again in every example.</p>
+<h3 id="what-are-extensions">2.11 What are extensions?</h3>
 <blockquote>
 <p><strong>Extensions are apps for VS Code. VS Code is the platform; extensions are the apps.</strong></p>
 </blockquote>
-<p>Examples: GitHub Copilot · Python · Markdown tools · database tools · visualization tools · other AI assistants (Claude, Codex).</p>
-<h2 id="setup">Setup guide (do this before or after the session)</h2>
-<p><strong>Why it matters:</strong> everything in the demos runs on this setup. It takes about twenty minutes, and most of it is free for faculty and students.</p>
-
+<p>Examples: GitHub Copilot · Python · Markdown tools · database tools · visualization tools · other AI assistants (Claude, Codex). GitHub Copilot itself is installed as an extension.</p>
+<h3 id="setup">2.12 Setup guide (do this before or after the session)</h3>
+<p><strong>Why it matters:</strong> all the examples run on this setup. It takes about twenty minutes, and most of it is free for faculty and students.</p>
 <ol>
 <li><strong>Create a GitHub account.</strong> Sign up at <a href="https://github.com">github.com</a>. Turn on two-factor authentication. Fill in a profile. <em>You are done when</em> you can sign in at github.com.</li>
-<li><strong>Apply for GitHub Education.</strong> Faculty and teachers apply for teacher verification; students apply for student verification. The benefits include GitHub Copilot. Link: TODO. <em>You are done when</em> your application is approved. </li>
-<li><strong>Install VS Code.</strong> Download from <a href="https://code.visualstudio.com/download">code.visualstudio.com/download</a>, install, and launch. <em>You are done when</em> VS Code opens.</li>
+<li>
+<p><strong>Apply for GitHub Education.</strong> Faculty and teachers apply for teacher verification; students apply for student verification. The benefits include GitHub Copilot. Start at <a href="https://github.com/education">github.com/education</a>. GitHub's guide <a href="https://docs.github.com/en/education/about-github-education/github-education-for-teachers/apply-to-github-education-as-a-teacher">Apply to GitHub Education as a teacher</a> lists what you need. <em>You are done when</em> your application is approved.</p>
+<p><img alt="The Join GitHub Education dialog, which lists free and discounted services for teachers and students, including Copilot" src="assets/images/github-education.jpg"></p>
+</li>
+<li>
+<p><strong>Install VS Code.</strong> Download from <a href="https://code.visualstudio.com/download">code.visualstudio.com/download</a>, install, and launch. <em>You are done when</em> VS Code opens.</p>
+</li>
 <li><strong>Sign in to GitHub from VS Code.</strong> Use the Accounts menu in the bottom-left corner. <em>You are done when</em> your GitHub name shows in the corner.</li>
 <li><strong>Clone a repository.</strong> Create or locate one on GitHub, then clone it into VS Code. Use <code>https://github.com/nimdvir/cce-2026</code> as the example, or let an agent do it with the <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/clone-repository.prompt.md">clone prompt</a> shown above. <em>You are done when</em> the folder opens as a workspace.</li>
 <li><strong>Enable GitHub Copilot.</strong> Follow <a href="https://code.visualstudio.com/docs/setup/copilot">Set up GitHub Copilot in VS Code</a>. Sign in, open Copilot Chat, find Ask / Plan / Agent, and pick a model. <em>You are done when</em> Copilot Chat answers a question.</li>
 <li><strong>Add extensions as needed.</strong> Python, Markdown, database tools.</li>
+<li><strong>Optional: add more models.</strong> Not needed for this session. See <a href="#add-models">Optional: add models to VS Code Chat</a> below.</li>
 </ol>
 <p>Key repository workflow: GitHub repository → clone → work in VS Code → commit → push.</p>
-<h2 id="task">Part III: 🎯 The Task</h2>
-<p><strong>Why it matters:</strong> the quality of what you get back depends mostly on what you asked for and what you gave the agent to work with.</p>
-<h3 id="what-makes-a-good-agent-task">What makes a good agent task?</h3>
+<h4 id="add-models">Optional: add models to VS Code Chat</h4>
+<p>You do not need this for the session. The models that come with Copilot are enough. This is for later, when you want to try a different "brain".</p>
+<p>There are three separate cases:</p>
+<ol>
+<li><strong>Models that are already included.</strong> Open Copilot Chat and click the model name in the chat input box. That list is the model picker. Pick one and keep working. Nothing to install.</li>
+<li><strong>A model from another provider, with an API key.</strong> In the model picker, choose <strong>Manage Language Models</strong> (the gear icon), or run <strong>Chat: Manage Language Models</strong> from the Command Palette. Select <strong>Add Models</strong>, choose the provider (for example Anthropic, Gemini, or OpenAI), and enter the API key that provider gave you. You pay that provider for what you use. If your Copilot plan comes through an organization, an administrator can turn this option off.</li>
+<li><strong>A local model on your own computer.</strong> Install <a href="https://ollama.com">Ollama</a> and the official Ollama extension for VS Code from the Extensions view. VS Code's older built-in Ollama option is deprecated, so use the extension. Your text stays on your machine, but you need a reasonably strong computer.</li>
+</ol>
+<p>One catch for cases 2 and 3: <strong>a model must support tool calling to work in Agent mode.</strong> If it does not, it will not show up in the model picker for agents.</p>
+<p>The menus change between VS Code versions. Check the current instructions: <a href="https://code.visualstudio.com/docs/copilot/customization/language-models">AI language models in VS Code</a>.</p>
+<h4 id="what-is-an-api">What is an API?</h4>
+<blockquote>
+<p>An API lets one piece of software communicate with another service.</p>
+</blockquote>
+<pre class="diagram"><code class="language-text">Agent → API → External Service
+</code></pre>
+<p>When you chat on a website, you talk to the model. With an API, a program talks to the model for you. That is how VS Code can use a model from a provider other than GitHub.</p>
+<p>An <strong>API key</strong> is the password for that connection. It identifies you, and the provider bills you for what the key uses. Keys, cost, permissions, and security all come with it.</p>
+<blockquote>
+<p><strong>Never publish an API key in a repository.</strong> Do not paste one into a prompt or a file that gets committed.</p>
+</blockquote>
+<h3 id="beyond">2.13 Beyond Copilot: models, other agents, MCP</h3>
+<p><strong>Why it matters:</strong> Copilot is the environment used today, but the "brain" can be swapped, and the same workflow carries over. You don't need any of them to get started.</p>
+<ul>
+<li><strong>Models and model selection:</strong> Copilot's model picker lets you choose among available models. They differ in quality, speed, and cost, so match the model to the task. Some models also let you set a thinking effort, from low (fast, simple fixes) to high (deep reasoning, multi-file work). To add models that are not in the list, see <a href="#add-models">Optional: add models to VS Code Chat</a>.</li>
+<li><strong>Other agents in VS Code:</strong> Claude (Anthropic), Codex (OpenAI), other AI extensions and specialized coding agents. Most of them read <code>AGENTS.md</code> too, and some add an instruction file of their own (Claude reads <code>CLAUDE.md</code>). Check the agent's documentation before assuming one file serves them all.</li>
+<li><strong>MCP and external tools:</strong> a standard way to connect agents to outside tools and data: databases, GitHub, Drive, web services, enterprise systems. Advanced and optional.</li>
+</ul>
+<p>More links are in the <a href="examples.html#resources">Resources</a> section of the Examples page.</p>
+<h2 id="task">Part 3: 🎯 The Task</h2>
+<h3 id="task-include">What does this include?</h3>
+<ul>
+<li><strong>Goal:</strong> the outcome you want.</li>
+<li><strong>Context:</strong> the files and information the agent needs.</li>
+<li><strong>Constraints:</strong> what it must preserve or avoid.</li>
+<li><strong>Prompting checklist:</strong> seven things to say in any task.</li>
+<li><strong>Project context:</strong> keeping knowledge in the workspace instead of retyping it.</li>
+</ul>
+<h3 id="task-why">Why does it matter?</h3>
+<p>The quality of what you get back depends mostly on what you asked for and what you gave the agent to work with.</p>
+<nav aria-label="In Part 3" class="toc toc-part">
+<p><strong>In this part</strong></p>
+<ul>
+<li><a href="#what-makes-a-good-agent-task">3.1 What makes a good agent task?</a></li>
+<li><a href="#prompting-agents">3.2 Prompting agents</a></li>
+<li><a href="#context-instead-of-giant-prompts">3.3 Context instead of giant prompts</a></li>
+</ul>
+</nav>
+<h3 id="what-makes-a-good-agent-task">3.1 What makes a good agent task?</h3>
 <pre class="diagram"><code class="language-text">GOAL + CONTEXT + CONSTRAINTS = TASK
 </code></pre>
 <ul>
-<li><strong>Goal</strong> — what outcome do you want? Bad: "Fix my course." Better: "Update this syllabus and schedule for Spring 2027."</li>
-<li><strong>Context</strong> — what does the agent need? Syllabus, schedule, policy files, screenshots, URLs, CSVs, an existing site, reference documents.</li>
-<li><strong>Constraints</strong> — what must it preserve or avoid? Do not change grading weights · do not invent missing dates · preserve the existing design · do not commit · flag uncertainty · use only supplied data.</li>
+<li><strong>Goal:</strong> what outcome do you want? Bad: "Fix my course." Better: "Update this syllabus and schedule for Spring 2027."</li>
+<li><strong>Context:</strong> what does the agent need? Syllabus, schedule, policy files, screenshots, URLs, CSVs, an existing site, reference documents.</li>
+<li><strong>Constraints:</strong> what must it preserve or avoid? Do not change grading weights · do not invent missing dates · preserve the existing design · do not commit · flag uncertainty · use only supplied data.</li>
 </ul>
 <blockquote>
 <p><strong>Goal:</strong> Update my syllabus for Spring 2027.</p>
 <p><strong>Context:</strong> Here are the syllabus, schedule, and assignments.</p>
 <p><strong>Constraints:</strong> Don't change grading weights; flag anything uncertain.</p>
 </blockquote>
-<p>That worked example is, almost word for word, the prompt for Demo 1. Here it is as it is saved in the repository, in <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/update-syllabus.prompt.md"><code>update-syllabus.prompt.md</code></a>:</p>
+<p>That worked example is, almost word for word, a prompt saved in this project's repository, in <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/update-syllabus.prompt.md"><code>update-syllabus.prompt.md</code></a>:</p>
 <div class="prompt-box">
 <div class="prompt-bar"><span class="prompt-label">Prompt</span></div>
-<pre class="prompt"><code class="language-prompt">The course files are in live/syllabus/.
+<pre class="prompt"><code class="language-prompt">The course files are in syllabus/.
 
 Update the course for Spring 2027 without changing grading weights. Identify inconsistent dates and flag anything requiring judgment.
 </code></pre>
 </div>
-<p>The first line is the context. The second sentence is the goal and one constraint. The last sentence is two more constraints. Three lines, and the agent has everything it needs.</p>
-<h3 id="prompting-agents">Prompting agents</h3>
+<p>The first line is the context. Here <code>syllabus/</code> stands for your own course folder. The second sentence is the goal and one constraint. The last sentence is two more constraints. That's three lines, and the agent has what it needs.</p>
+<h3 id="prompting-agents">3.2 Prompting agents</h3>
 <p>A checklist for any task you give an agent:</p>
 <ul>
 <li>be explicit about outcomes</li>
@@ -458,8 +598,8 @@ Update the course for Spring 2027 without changing grading weights. Identify inc
 <li>ask it to verify afterward</li>
 </ul>
 <p>In Copilot Chat, you can attach files with the <strong>+</strong> button, or type <strong>#</strong> to point at a file or the whole workspace.</p>
-<p>The prompt that wrote the pages you are reading follows every item on this checklist. It names the spec, lists the source files, says which one wins, sets boundaries, tells the agent what to leave as a TODO instead of inventing, and asks for a report. Read it in <a href="examples.html#this-website">Example 1</a> on the Examples page, or open <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/write-site-content.prompt.md"><code>write-site-content.prompt.md</code></a> in the repository.</p>
-<h3 id="context-instead-of-giant-prompts">Context instead of giant prompts</h3>
+<p>The prompt that wrote the pages you are reading follows every item on this checklist. It names the spec, lists the source files, says which one wins when they disagree, sets boundaries, tells the agent what to leave as a TODO instead of inventing, and asks for a report. See the <a href="examples.html#this-website">website example</a> on the Examples page, or open <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/write-site-content.prompt.md"><code>write-site-content.prompt.md</code></a> in the repository.</p>
+<h3 id="context-instead-of-giant-prompts">3.3 Context instead of giant prompts</h3>
 <div class="table-wrap">
 <table>
 <thead>
@@ -479,9 +619,34 @@ Update the course for Spring 2027 without changing grading weights. Identify inc
 <blockquote>
 <p><strong>Move knowledge from the prompt into the workspace.</strong></p>
 </blockquote>
-<h2 id="workflow">Part IV: 🔄 The Workflow</h2>
-<p><strong>Why it matters:</strong> one good result is luck. A repeatable result is a workflow.</p>
-<h3 id="a-reliable-agent-workflow">A reliable agent workflow</h3>
+<h2 id="workflow">Part 4: 🔄 The Workflow</h2>
+<h3 id="workflow-include">What does this include?</h3>
+<ul>
+<li><strong>The workflow loop:</strong> understand, plan, act, review, verify, repeat.</li>
+<li><strong>Review:</strong> what to inspect, and the execution report you should always ask for.</li>
+<li><strong>Workspace:</strong> the organized folder the agent works in.</li>
+<li><strong><code>AGENTS.md</code>:</strong> standing instructions for a project.</li>
+<li><strong>Reusable prompts and skills:</strong> saved instructions you run again.</li>
+<li><strong>Git:</strong> checkpoints that keep agent work reversible.</li>
+<li><strong>SWOT:</strong> the strengths, weaknesses, opportunities, and threats of agents.</li>
+</ul>
+<h3 id="workflow-why">Why does it matter?</h3>
+<p>One good result is luck. A repeatable result is a workflow.</p>
+<nav aria-label="In Part 4" class="toc toc-part">
+<p><strong>In this part</strong></p>
+<ul>
+<li><a href="#a-reliable-agent-workflow">4.1 A reliable agent workflow</a></li>
+<li><a href="#reviewing-agent-work">4.2 Reviewing agent work</a></li>
+<li><a href="#what-is-a-workspace">4.3 What is a workspace?</a></li>
+<li><a href="#what-is-agentsmd">4.4 What is <code>AGENTS.md</code>?</a></li>
+<li><a href="#reusable-prompts">4.5 Reusable prompts</a></li>
+<li><a href="#skills">4.6 Skills</a></li>
+<li><a href="#from-prompt-to-workflow">4.7 From prompt to workflow</a></li>
+<li><a href="#git-in-the-workflow">4.8 Git in the workflow</a></li>
+<li><a href="#responsible-use">4.9 Agents: strengths, weaknesses, opportunities, threats (SWOT)</a></li>
+</ul>
+</nav>
+<h3 id="a-reliable-agent-workflow">4.1 A reliable agent workflow</h3>
 <pre class="diagram"><code class="language-text">UNDERSTAND → PLAN → ACT → REVIEW → VERIFY → REPEAT
 </code></pre>
 <p>Mapped to Copilot:</p>
@@ -491,7 +656,7 @@ Update the course for Spring 2027 without changing grading weights. Identify inc
 <li><strong>Agent</strong> → execute</li>
 <li><strong>You</strong> → review and verify</li>
 </ul>
-<h3 id="reviewing-agent-work">Reviewing agent work</h3>
+<h3 id="reviewing-agent-work">4.2 Reviewing agent work</h3>
 <p>What to inspect after an agent finishes:</p>
 <ul>
 <li>files changed</li>
@@ -502,11 +667,26 @@ Update the course for Spring 2027 without changing grading weights. Identify inc
 <li>tests</li>
 <li>Git status</li>
 </ul>
-<p>Copilot also pauses before it runs a terminal command for the first time and asks for your permission. Read the command before you allow it.</p>
+<p>By default, Copilot asks for your permission before it runs a terminal command. Read the command before you allow it. VS Code lets you turn on auto-approval for commands. Leave that off until you know what you are approving.</p>
 <blockquote>
 <p><strong>"Completed" does not necessarily mean "correct."</strong></p>
 </blockquote>
-<h3 id="what-is-a-workspace">What is a workspace?</h3>
+<p><strong>Always ask for a detailed execution report.</strong> End every task by asking the agent to tell you exactly what it did. A good report covers:</p>
+<ul>
+<li>what it changed, file by file</li>
+<li>what commands it ran, and what they returned</li>
+<li>what it checked, and how</li>
+<li>what it skipped, could not do, or was unsure about</li>
+<li>what is left for you to decide</li>
+</ul>
+<p>You can add one line to any prompt:</p>
+<div class="prompt-box">
+<div class="prompt-bar"><span class="prompt-label">Prompt</span></div>
+<pre class="prompt"><code class="language-prompt">When you finish, give me a detailed execution report: every file you changed, every command you ran, what you verified and how, and anything you skipped or were unsure about.
+</code></pre>
+</div>
+<p>The report is not proof. It tells you where to look. The <a href="#clone-github-vs-code">clone prompt</a> in Part 2 ends this way, and so do the other prompts used to build this site.</p>
+<h3 id="what-is-a-workspace">4.3 What is a workspace?</h3>
 <p>A workspace is the environment holding related project materials.</p>
 <pre class="diagram"><code class="language-text">course/
 ├── source/
@@ -524,11 +704,11 @@ Update the course for Spring 2027 without changing grading weights. Identify inc
 <li><strong>Separating inputs from outputs.</strong> Source material stays untouched; generated material has its own folder.</li>
 <li><strong>Reducing accidental changes.</strong> Clear structure makes it harder to edit the wrong file.</li>
 </ul>
-<h3 id="what-is-agentsmd">What is <code>AGENTS.md</code>?</h3>
+<h3 id="what-is-agentsmd">4.4 What is <code>AGENTS.md</code>?</h3>
 <pre class="diagram"><code class="language-text">Prompt:      &quot;Do this now.&quot;
 AGENTS.md:   &quot;Always work this way in this project.&quot;
 </code></pre>
-<p><code>AGENTS.md</code> is a plain-text file at the top of a project. Agents that support it, including Copilot, find it on their own and follow it before they work. Some agents also have an instruction file of their own; Claude, for example, reads <code>CLAUDE.md</code> the same way. Example rules:</p>
+<p><code>AGENTS.md</code> is a plain-text file at the top of a project. Agents that support it, including Copilot, find it on their own and read it before they start. Some agents also have an instruction file of their own. Claude, for example, reads <code>CLAUDE.md</code> the same way. Example rules:</p>
 <ul>
 <li>don't invent facts</li>
 <li>inspect existing files first</li>
@@ -538,25 +718,25 @@ AGENTS.md:   &quot;Always work this way in this project.&quot;
 <li>verify changes</li>
 </ul>
 <p>See <a href="https://github.com/nimdvir/cce-2026/blob/main/AGENTS.md">this repository's own <code>AGENTS.md</code></a> on GitHub.</p>
-<h3 id="reusable-prompts">Reusable prompts</h3>
+<h3 id="reusable-prompts">4.5 Reusable prompts</h3>
 <p>Save prompts you expect to repeat. Keep a prompt library. Parameterize repeated tasks so one prompt serves many semesters.</p>
-<p>Examples: semester updates, feedback analysis, course sites, grading.</p>
-<p>In VS Code, a saved prompt is a small file in the <code>.github/prompts/</code> folder whose name ends in <code>.prompt.md</code>. The top of the file says what the prompt is for. The rest is the prompt. This is the Demo 1 prompt from Part III, now saved as a file:</p>
+<p>Examples: semester updates, syllabus reviews, course sites, data analysis.</p>
+<p>In VS Code, a saved prompt is a small file in the <code>.github/prompts/</code> folder whose name ends in <code>.prompt.md</code>. The top of the file says what the prompt is for and which mode runs it. The rest is the prompt. This is the syllabus prompt from <a href="#task">Part 3</a>, now saved as a file:</p>
 <div class="prompt-box">
 <div class="prompt-bar"><span class="prompt-label">Prompt</span></div>
 <pre class="prompt"><code class="language-prompt">---
-mode: agent
-description: Demo 1. Update the fictional course in live/syllabus/ for Spring 2027. Use Plan mode first, then Agent.
+agent: agent
+description: Update the course in syllabus/ for Spring 2027. Use Plan mode first, then Agent.
 ---
 
-The course files are in live/syllabus/.
+The course files are in syllabus/.
 
 Update the course for Spring 2027 without changing grading weights. Identify inconsistent dates and flag anything requiring judgment.
 </code></pre>
 </div>
 <p>To run it, open Copilot Chat and type <code>/update-syllabus</code>. Next semester, change one year in the file and run it again.</p>
-<p>Every prompt used in this project is saved this way. See <a href="https://github.com/nimdvir/cce-2026/tree/main/.github/prompts"><code>.github/prompts/</code></a> in this repository, and the index in <a href="https://github.com/nimdvir/cce-2026/blob/main/presentation/prompts.md"><code>presentation/prompts.md</code></a>.</p>
-<h3 id="skills">Skills</h3>
+<p>The prompts for this project are saved this way. See <a href="https://github.com/nimdvir/cce-2026/tree/main/.github/prompts"><code>.github/prompts/</code></a> in the repository, and the index in <a href="https://github.com/nimdvir/cce-2026/blob/main/presentation/prompts.md"><code>presentation/prompts.md</code></a>. Each example walkthrough also links to its own prompts.</p>
+<h3 id="skills">4.6 Skills</h3>
 <blockquote>
 <p><strong>A skill is a reusable set of instructions and procedures for performing a type of task.</strong></p>
 </blockquote>
@@ -568,46 +748,59 @@ Update the course for Spring 2027 without changing grading weights. Identify inc
 <li>tool use</li>
 <li>standardized outputs</li>
 </ul>
-<p>See <a href="https://github.com/nimdvir/cce-2026/tree/main/.github/skills">the grading skill in <code>.github/skills/</code></a> in this repository.</p>
-<h3 id="from-prompt-to-workflow">From prompt to workflow</h3>
+<p>For a real one, see the <code>syllabus-consistency</code> skill in the <a href="examples/syllabus/index.html">syllabus example's walkthrough</a>. It tells the agent how to check a syllabus revision for inconsistent dates, grading weights, links, and policy changes, and what to report.</p>
+<h3 id="from-prompt-to-workflow">4.7 From prompt to workflow</h3>
 <pre class="diagram"><code class="language-text">PROMPT                 → one task, typed once
 REUSABLE PROMPT        → .github/prompts/update-syllabus.prompt.md
 PROJECT INSTRUCTIONS   → AGENTS.md
-SKILL                  → .github/skills/grade-submission/SKILL.md
+SKILL                  → skills/syllabus-consistency/SKILL.md
 WORKFLOW               → several steps, chained and repeatable
 </code></pre>
-<p>The files on the ladder are real. Open them: <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/update-syllabus.prompt.md"><code>update-syllabus.prompt.md</code></a> · <a href="https://github.com/nimdvir/cce-2026/blob/main/AGENTS.md"><code>AGENTS.md</code></a> · <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/skills/grade-submission/SKILL.md"><code>grade-submission/SKILL.md</code></a>.</p>
+<p>The files on the ladder are real. Open them: <a href="https://github.com/nimdvir/cce-2026/blob/main/.github/prompts/update-syllabus.prompt.md"><code>update-syllabus.prompt.md</code></a> · <a href="https://github.com/nimdvir/cce-2026/blob/main/AGENTS.md"><code>AGENTS.md</code></a> · the <code>syllabus-consistency</code> skill in the <a href="examples/syllabus/index.html">syllabus walkthrough</a>.</p>
 <p>This is the subtitle of the talk. <strong>From Prompting to Workflows.</strong></p>
-<h3 id="git-in-the-workflow">Git in the workflow</h3>
+<h3 id="git-in-the-workflow">4.8 Git in the workflow</h3>
 <p>With Git, changes remain visible, reviewable, and reversible.</p>
 <p>Commit before an agent task. Review the diff after. Revert if needed.</p>
-<h2 id="beyond">Beyond Copilot: models, other agents, APIs, MCP</h2>
-<p><strong>Why it matters:</strong> Copilot is the environment used today, but the "brain" can be swapped, and the same workflow carries over. These are alternatives and additions, not prerequisites.</p>
+<h3 id="responsible-use">4.9 Agents: strengths, weaknesses, opportunities, threats (SWOT)</h3>
+<p><strong>Why it matters:</strong> the agent works for you, but you are still responsible for the result. A SWOT lays out both sides.</p>
+<h4 id="strengths">Strengths</h4>
 <ul>
-<li><strong>Models and model selection</strong> — Copilot's model picker lets you choose among available models. They behave differently: quality vs. speed vs. cost. Match the model to the task. Some models also let you set a thinking effort, from low (fast, simple fixes) to high (deep reasoning, multi-file work).</li>
-<li><strong>Other agents in VS Code</strong> — Claude (Anthropic), Codex (OpenAI), other AI extensions and specialized coding agents. Most of them read <code>AGENTS.md</code> too, and some add an instruction file of their own (Claude reads <code>CLAUDE.md</code>). Check the agent's documentation before assuming one file serves them all.</li>
-<li><strong>Bring your own key</strong> — Copilot and other tools can use a model from another provider (for example DeepSeek, Qwen, MiMo, or a local model) with an API key.</li>
-<li><strong>What is an API?</strong> — "An API lets one piece of software communicate with another service." Keys, cost, permissions, and security all come with it. <strong>Never publish an API key in a repository.</strong></li>
+<li><strong>Works where your files are.</strong> An agent reads, searches, creates, and edits many files in one task.</li>
+<li><strong>Does multi-step work.</strong> It plans, acts, checks its result, and revises.</li>
+<li><strong>Runs tools.</strong> Python, data analysis, charts, website builds, Git.</li>
+<li><strong>Repeatable.</strong> Saved prompts, <code>AGENTS.md</code>, and skills make the next run look like the last one.</li>
 </ul>
-<pre class="diagram"><code class="language-text">Agent → API → External Service
-</code></pre>
+<h4 id="weaknesses">Weaknesses</h4>
 <ul>
-<li><strong>MCP and external tools</strong> — a standard way to connect agents to outside tools and data: databases, GitHub, Drive, web services, enterprise systems. Advanced and optional.</li>
+<li><strong>Hallucinations and errors.</strong> Agents can invent plausible information, misunderstand ambiguous requirements, and make technically valid but undesirable changes.</li>
+<li><strong>No knowledge it was not given.</strong> It does not know your course, your policies, or your students unless the files say so.</li>
+<li><strong>No pedagogical judgment.</strong> It cannot decide what matters for your teaching without guidance.</li>
+<li><strong>Limited context.</strong> A model holds only so much at once. Too much material crowds out what matters.</li>
 </ul>
-<p>Links for each item are in the <a href="examples.html#resources">Resources</a> section of the Examples page.</p>
-<h2 id="responsible-use">Responsible agent use</h2>
-<p><strong>Why it matters:</strong> the agent works for you, but you remain responsible for the result.</p>
+<h4 id="opportunities">Opportunities</h4>
 <ul>
-<li><strong>Hallucinations and errors</strong> — agents can invent plausible information, misunderstand ambiguous requirements, and make technically valid but undesirable changes.</li>
-<li><strong>Privacy</strong> — student data, grades, FERPA-sensitive material, research participants, unpublished research, institutional information. Keep them out of prompts, files, and repositories. Everything in this repository's demos is synthetic.</li>
-<li><strong>Human review</strong> — the core principle:</li>
+<li><strong>Recurring academic work.</strong> Semester updates, course sites, data analysis, document conversion, and courseware (see the <a href="examples.html">Examples</a>).</li>
+<li><strong>Building without being an engineer.</strong> Websites, scripts, and automations become possible for faculty who could not build them before.</li>
+<li><strong>From casual use to a workflow.</strong> One good prompt becomes a reusable prompt, then project instructions, then a skill.</li>
+<li><strong>A choice of brains.</strong> Models are interchangeable, so the workflow you learn carries over when you switch.</li>
 </ul>
+<h4 id="threats">Threats</h4>
+<ul>
+<li><strong>Privacy.</strong> Student data, grades, FERPA-sensitive material, research participants, unpublished research, institutional information.</li>
+<li><strong>Unreviewed changes.</strong> An agent can change many files quickly. A mistake you don't catch becomes your mistake.</li>
+<li><strong>Academic integrity.</strong> Unclear AI use erodes trust between you and your students.</li>
+<li><strong>Leaked keys and costs.</strong> A published API key can be used, and billed, by someone else.</li>
+</ul>
+<h4 id="safeguards">What to do about it</h4>
 <blockquote>
 <p><strong>Delegate work, not responsibility.</strong></p>
 </blockquote>
 <ul>
-<li><strong>Version control and reversibility</strong> — inspect changes, commit checkpoints, revert, recover.</li>
-<li><strong>Academic integrity</strong> — be explicit with students about how AI is used in a course. Say what the agent did and what you did. Use agents for preparation and feedback, not as a substitute for judgment. The grade, the policy, and the decision remain yours.</li>
+<li><strong>Human review:</strong> read the diff, the output, and the execution report before you accept anything. "Completed" does not mean "correct."</li>
+<li><strong>Privacy:</strong> keep student data, grades, FERPA-sensitive material, research participants, unpublished research, and institutional information out of prompts, files, and repositories. Check what is in a file before you hand it to an agent or publish it.</li>
+<li><strong>Version control and reversibility:</strong> inspect changes, commit checkpoints, revert, recover.</li>
+<li><strong>Academic integrity:</strong> be explicit with students about how AI is used in a course. Say what the agent did and what you did. Use agents for preparation and feedback, not as a substitute for judgment. The grade, the policy, and the decision remain yours.</li>
+<li><strong>Keys:</strong> never publish an API key in a repository.</li>
 </ul>
 <hr>
 <p class="next"><strong>Next →</strong> <a href="examples.html">Part 5: The Examples</a></p>
@@ -615,7 +808,7 @@ WORKFLOW               → several steps, chained and repeatable
 </main>
 <footer class="site-footer">
 <p>AI Agents in VS Code for Academic Work · CCE 2026 · Nim Dvir</p>
-<p><a href="https://github.com/nimdvir/cce-2026">github.com/nimdvir/cce-2026</a></p>
+<p><a href="mailto:ndvir@albany.edu">ndvir@albany.edu</a> · <a href="https://github.com/nimdvir/cce-2026">github.com/nimdvir/cce-2026</a></p>
 <p>Built with AI agents in VS Code.</p>
 </footer>
 </body>

@@ -1,0 +1,17 @@
+---
+name: syllabus-consistency
+description: Check a syllabus or proposed syllabus revision for inconsistent course identifiers, dates, grading weights, links, and policy changes. Use before accepting a syllabus edit or semester rollover.
+---
+
+# Syllabus consistency
+
+1. Identify the authoritative source, its internal revision date, and the proposed output. Report conflicting versions; do not choose merely by filename.
+2. Record course title, code, term, meeting pattern, grading components, percentages, and dated assessments.
+3. Compare before and after. Separate requested changes from unexpected differences.
+4. Verify each grading component and the total. A correct total does not prove individual weights are correct.
+5. Check dates against the supplied official calendar and meeting pattern. Count class sessions separately from weeks. Do not invent dates if the calendar is absent.
+6. Check internal anchors and referenced resources where accessible; mark anything not verified.
+7. Preserve policy wording unless the instructor explicitly requested a change. Keep private meeting credentials out of public reports.
+8. Report: source, requested change, checks with evidence, problems by severity, and unresolved questions. Propose repairs separately; do not silently rewrite ambiguous facts.
+
+For a teaching excerpt, limit the claim to the excerpt. Do not certify an entire syllabus from a partial view.

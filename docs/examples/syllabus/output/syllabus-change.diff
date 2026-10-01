@@ -1,0 +1,10 @@
+--- syllabus-before.html
++++ syllabus-after.html
+@@ -1,6 +1,6 @@
+ <!doctype html><html lang="en"><meta charset="utf-8"><title>BITM 330 teaching excerpt</title><style>body{font:20px system-ui;max-width:1080px;margin:40px auto;color:#0b1f3a}table{border-collapse:collapse;width:100%;margin:20px 0}th,td{border:1px solid #ccd6de;padding:10px;text-align:left}th{background:#e9f5f8}h2{margin-top:40px}</style><body><h1>BITM 330 • Fall 2026</h1><p><strong>Prepared teaching excerpt.</strong> Current source: syllabus.html, updated September 28. Only grading weights and course schedule are included.</p><h2>7.1 Deliverable Weights</h2><table><tbody>
+ <tr><th>Component</th><th>Weight</th></tr><tr><td>Readiness Assurance Tests (RATs)</td><td>25%</td></tr><tr><td>Applied Labs</td><td>25%</td></tr><tr><td>Midterm Project</td><td>8%</td></tr><tr><td>Midterm Test</td><td>8%</td></tr><tr><td>Final Project</td><td>12%</td></tr><tr><td>Final Test</td><td>12%</td></tr><tr><td>Class Participation</td><td>10%</td></tr><tr><td><strong>Total</strong></td><td><strong>100%</strong></td></tr>
+-</tbody></table><h2>8. Course Schedule</h2><table><tbody>
++</tbody></table><h2>8. Course Schedule and Deadlines</h2><table><tbody>
+ <tr><th>Class #</th><th>Wk</th><th>Date</th><th>Day</th><th>Topic</th><th>Reading</th><th>Format</th></tr>
+ <tr><td>1</td><td>1</td><td>8/25</td><td>Tue</td><td>Course Introduction &amp; Syllabus</td><td>Syllabus</td><td>In-person</td></tr>
+ <tr><td>2</td><td>1</td><td>8/27</td><td>Thu</td><td>Welcome to the Textbook: Data to Decisions</td><td>Ch 1</td><td>In-person</td></tr>

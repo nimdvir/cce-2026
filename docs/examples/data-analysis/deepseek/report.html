@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BITM 330 - form submissions quick analysis</title>
+<style>
+
+:root{
+  --bg:#f6f8f8; --card:#ffffff; --ink:#17212b; --muted:#5b6770;
+  --border:#e2e6e9; --teal:#008f80; --teal-soft:rgba(0,143,128,.10);
+  --c-present:#008f80; --c-partial:#c9871f; --c-absent:#b5495b; --chip:#eef4f3;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1416; --card:#131c1f; --ink:#f4f6f8; --muted:#9fb0b6;
+    --border:#243136; --teal:#00e5c8; --teal-soft:rgba(0,229,200,.10);
+    --c-present:#00e5c8; --c-partial:#e8b04d; --c-absent:#e07a8c; --chip:#16262a;
+  }
+}
+[data-theme="dark"]{
+  --bg:#0e1416; --card:#131c1f; --ink:#f4f6f8; --muted:#9fb0b6;
+  --border:#243136; --teal:#00e5c8; --teal-soft:rgba(0,229,200,.10);
+  --c-present:#00e5c8; --c-partial:#e8b04d; --c-absent:#e07a8c; --chip:#16262a;
+}
+*{box-sizing:border-box}
+body{font:16px/1.55 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--bg);color:var(--ink);margin:0}
+.wrap{max-width:980px;margin:0 auto;padding:26px 18px 64px}
+header h1{font-size:1.55rem;margin:0 0 6px}
+header .sub{color:var(--muted);margin:0 0 10px}
+.chip{display:inline-block;background:var(--chip);color:var(--muted);
+  border-radius:999px;padding:3px 11px;font-size:.78rem}
+.topnav{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.topnav a{color:var(--teal);text-decoration:none;font-size:.85rem;
+  border:1px solid var(--border);border-radius:999px;padding:3px 11px}
+section{background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:20px 22px;margin-top:22px}
+h2{font-size:1.13rem;margin:0 0 4px}
+.sub{color:var(--muted);font-size:.92rem;margin:0 0 14px}
+.note{color:var(--muted);font-size:.85rem;margin-top:10px}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);
+  vertical-align:top}
+th{color:var(--muted);font-weight:600}
+td.n,th.n{text-align:right}
+.scroll{overflow-x:auto}
+.tiles{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 16px}
+.tile{flex:1 1 150px;background:var(--bg);border:1px solid var(--border);
+  border-radius:12px;padding:12px 14px}
+.tile .num{font-size:1.6rem;font-weight:700;color:var(--teal);line-height:1.2}
+.tile .lbl{color:var(--muted);font-size:.82rem}
+.chart{width:100%;height:auto;display:block}
+.chartwrap{overflow-x:auto}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin:4px 0 8px;font-size:.86rem;
+  color:var(--muted)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;
+  vertical-align:-1px}
+.sw-present{background:var(--c-present)}
+.sw-partial{background:var(--c-partial)}
+.sw-absent{background:var(--c-absent)}
+.highlight{background:var(--teal-soft);border:1px solid var(--border);
+  border-radius:12px;padding:14px 16px;margin-top:14px}
+.dq{list-style:none;padding:0;margin:8px 0 0}
+.dq li{margin:7px 0}
+.badge{display:inline-block;min-width:34px;text-align:center;background:var(--chip);
+  color:var(--ink);border:1px solid var(--border);border-radius:999px;
+  padding:1px 9px;margin-right:8px;font-weight:600;font-size:.85rem}
+footer{color:var(--muted);font-size:.85rem;margin-top:26px}
+footer p{margin:5px 0}
+.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.84rem}
+@media print{body{background:#fff} section{border-color:#ccc;break-inside:avoid}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>BITM 330 &middot; Form submissions, quick session analysis</h1><p class="sub">Source: BITM330 Fall2026.csv &middot; 2,436 submissions &middot; generated 2026-09-30 &middot; script: analyze.py</p><span class="chip">Aggregates only - answer and reason text is never shown</span><nav class="topnav"><a href="#sessions">Submissions</a><a href="#attendance">Attendance</a><a href="#questions">Questions &amp; answers</a><a href="#absence">Absence reasons</a><a href="#data-quality">Data quality</a></nav></header>
+<section id="sessions"><h2>1 &middot; Submissions per session</h2><p class="sub">8 session dates carry the form (50+ submissions). Submissions drift from <strong>310</strong> on 8/25 down to <strong>283</strong> on 9/29.</p><div class="chartwrap"><svg viewBox="0 0 780 350" class="chart" role="img" aria-label="Bar chart of submissions per session"><line x1="56" y1="222.5" x2="760" y2="222.5" stroke="var(--border)" stroke-width="1"/><text x="48" y="226.5" text-anchor="end" font-size="11" fill="var(--muted)">100</text><line x1="56" y1="157.0" x2="760" y2="157.0" stroke="var(--border)" stroke-width="1"/><text x="48" y="161.0" text-anchor="end" font-size="11" fill="var(--muted)">200</text><line x1="56" y1="91.5" x2="760" y2="91.5" stroke="var(--border)" stroke-width="1"/><text x="48" y="95.5" text-anchor="end" font-size="11" fill="var(--muted)">300</text><line x1="56" y1="26.0" x2="760" y2="26.0" stroke="var(--border)" stroke-width="1"/><text x="48" y="30.0" text-anchor="end" font-size="11" fill="var(--muted)">400</text><line x1="56" y1="288" x2="760" y2="288" stroke="var(--border)" stroke-width="1.5"/><rect x="75.4" y="84.9" width="49.3" height="203.1" rx="5" fill="var(--c-present)"/><text x="100.0" y="76.9" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">310</text><text x="100.0" y="306.0" text-anchor="middle" font-size="12" fill="var(--ink)">8/25</text><text x="100.0" y="322.0" text-anchor="middle" font-size="11" fill="var(--muted)">C1</text><rect x="163.4" y="79.7" width="49.3" height="208.3" rx="5" fill="var(--c-present)"/><text x="188.0" y="71.7" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">318</text><text x="188.0" y="306.0" text-anchor="middle" font-size="12" fill="var(--ink)">8/27</text><text x="188.0" y="322.0" text-anchor="middle" font-size="11" fill="var(--muted)">C2</text><rect x="251.4" y="78.4" width="49.3" height="209.6" rx="5" fill="var(--c-present)"/><text x="276.0" y="70.4" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">320</text><text x="276.0" y="306.0" text-anchor="middle" font-size="12" fill="var(--ink)">9/1</text><text x="276.0" y="322.0" text-anchor="middle" font-size="11" fill="var(--muted)">C3</text><rect x="339.4" y="90.2" width="49.3" height="197.8" rx="5" fill="var(--c-present)"/><text x="364.0" y="82.2" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">302</text><text x="364.0" y="306.0" text-anchor="middle" font-size="12" fill="var(--ink)">9/3</text><text x="364.0" y="322.0" text-anchor="middle" font-size="11" fill="var(--muted)">C4</text><rect x="427.4" y="95.4" width="49.3" height="192.6" rx="5" fill="var(--c-present)"/><text x="452.0" y="87.4" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">294</text><text x="452.0" y="306.0" text-anchor="middle" font-size="12" fill="var(--ink)">9/8</text><text x="452.0" y="322.0" text-anchor="middle" font-size="11" fill="var(--muted)">C5</text><rect x="515.4" y="97.4" width="49.3" height="190.6" rx="5" fill="var(--c-present)"/><text x="540.0" y="89.4" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">291</text><text x="540.0" y="306.0" text-anchor="middle" font-size="12" fill="var(--ink)">9/15</text><text x="540.0" y="322.0" text-anchor="middle" font-size="11" fill="var(--muted)">C7</text><rect x="603.4" y="93.5" width="49.3" height="194.5" rx="5" fill="var(--c-present)"/><text x="628.0" y="85.5" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">297</text><text x="628.0" y="306.0" text-anchor="middle" font-size="12" fill="var(--ink)">9/22</text><text x="628.0" y="322.0" text-anchor="middle" font-size="11" fill="var(--muted)">C9</text><rect x="691.4" y="102.6" width="49.3" height="185.4" rx="5" fill="var(--c-present)"/><text x="716.0" y="94.6" text-anchor="middle" font-size="13" font-weight="600" fill="var(--ink)">283</text><text x="716.0" y="306.0" text-anchor="middle" font-size="12" fill="var(--ink)">9/29</text><text x="716.0" y="322.0" text-anchor="middle" font-size="11" fill="var(--muted)">C11</text></svg></div><p class="note">Lowest session: 9/29 with 283 submissions. Calendar days with almost no data are listed in section 5.</p></section>
+<section id="attendance"><h2>2 &middot; Attendance status</h2><p class="sub">Overall shares of the 2,436 submissions, then session by session.</p><div class="tiles"><div class="tile"><div class="num">98.9%</div><div class="lbl">Present &middot; 2,408</div></div><div class="tile"><div class="num">0.6%</div><div class="lbl">Partially present &middot; 14</div></div><div class="tile"><div class="num">0.6%</div><div class="lbl">Absent &middot; 14</div></div></div><div class="legend"><span><span class="sw sw-present"></span>Present</span><span><span class="sw sw-partial"></span>Partially present</span><span><span class="sw sw-absent"></span>Absent</span></div><div class="chartwrap"><svg viewBox="0 0 780 340" class="chart" role="img" aria-label="Stacked bars of attendance status per session"><line x1="56" y1="290" x2="760" y2="290" stroke="var(--border)" stroke-width="1.5"/><rect x="75.4" y="290.0" width="49.3" height="0.0" fill="var(--c-absent)"/><rect x="75.4" y="289.2" width="49.3" height="0.8" fill="var(--c-partial)"/><rect x="75.4" y="30.0" width="49.3" height="259.2" fill="var(--c-present)"/><text x="100.0" y="163.6" text-anchor="middle" font-size="11" fill="#ffffff">100%</text><text x="100.0" y="22.0" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">310</text><text x="100.0" y="307.0" text-anchor="middle" font-size="12" fill="var(--ink)">8/25</text><rect x="163.4" y="285.9" width="49.3" height="4.1" fill="var(--c-absent)"/><rect x="163.4" y="285.1" width="49.3" height="0.8" fill="var(--c-partial)"/><rect x="163.4" y="30.0" width="49.3" height="255.1" fill="var(--c-present)"/><text x="188.0" y="161.5" text-anchor="middle" font-size="11" fill="#ffffff">98%</text><text x="188.0" y="22.0" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">318</text><text x="188.0" y="307.0" text-anchor="middle" font-size="12" fill="var(--ink)">8/27</text><rect x="251.4" y="289.2" width="49.3" height="0.8" fill="var(--c-absent)"/><rect x="251.4" y="286.8" width="49.3" height="2.4" fill="var(--c-partial)"/><rect x="251.4" y="30.0" width="49.3" height="256.8" fill="var(--c-present)"/><text x="276.0" y="162.4" text-anchor="middle" font-size="11" fill="#ffffff">99%</text><text x="276.0" y="22.0" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">320</text><text x="276.0" y="307.0" text-anchor="middle" font-size="12" fill="var(--ink)">9/1</text><rect x="339.4" y="285.7" width="49.3" height="4.3" fill="var(--c-absent)"/><rect x="339.4" y="284.8" width="49.3" height="0.9" fill="var(--c-partial)"/><rect x="339.4" y="30.0" width="49.3" height="254.8" fill="var(--c-present)"/><text x="364.0" y="161.4" text-anchor="middle" font-size="11" fill="#ffffff">98%</text><text x="364.0" y="22.0" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">302</text><text x="364.0" y="307.0" text-anchor="middle" font-size="12" fill="var(--ink)">9/3</text><rect x="427.4" y="289.1" width="49.3" height="0.9" fill="var(--c-absent)"/><rect x="427.4" y="286.5" width="49.3" height="2.7" fill="var(--c-partial)"/><rect x="427.4" y="30.0" width="49.3" height="256.5" fill="var(--c-present)"/><text x="452.0" y="162.2" text-anchor="middle" font-size="11" fill="#ffffff">99%</text><text x="452.0" y="22.0" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">294</text><text x="452.0" y="307.0" text-anchor="middle" font-size="12" fill="var(--ink)">9/8</text><rect x="515.4" y="289.1" width="49.3" height="0.9" fill="var(--c-absent)"/><rect x="515.4" y="286.4" width="49.3" height="2.7" fill="var(--c-partial)"/><rect x="515.4" y="30.0" width="49.3" height="256.4" fill="var(--c-present)"/><text x="540.0" y="162.2" text-anchor="middle" font-size="11" fill="#ffffff">99%</text><text x="540.0" y="22.0" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">291</text><text x="540.0" y="307.0" text-anchor="middle" font-size="12" fill="var(--ink)">9/15</text><rect x="603.4" y="289.1" width="49.3" height="0.9" fill="var(--c-absent)"/><rect x="603.4" y="289.1" width="49.3" height="0.0" fill="var(--c-partial)"/><rect x="603.4" y="30.0" width="49.3" height="259.1" fill="var(--c-present)"/><text x="628.0" y="163.6" text-anchor="middle" font-size="11" fill="#ffffff">100%</text><text x="628.0" y="22.0" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">297</text><text x="628.0" y="307.0" text-anchor="middle" font-size="12" fill="var(--ink)">9/22</text><rect x="691.4" y="290.0" width="49.3" height="0.0" fill="var(--c-absent)"/><rect x="691.4" y="288.2" width="49.3" height="1.8" fill="var(--c-partial)"/><rect x="691.4" y="30.0" width="49.3" height="258.2" fill="var(--c-present)"/><text x="716.0" y="163.1" text-anchor="middle" font-size="11" fill="#ffffff">99%</text><text x="716.0" y="22.0" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink)">283</text><text x="716.0" y="307.0" text-anchor="middle" font-size="12" fill="var(--ink)">9/29</text></svg></div><div class="scroll"><table><tr><th>Date</th><th>Class</th><th class='n'>Submissions</th><th class='n'>Present</th><th class='n'>Partially present</th><th class='n'>Absent</th><th class='n'>Present share</th></tr><tr><td>8/25</td><td>C1</td><td class='n'>310</td><td class='n'>309</td><td class='n'>1</td><td class='n'>0</td><td class='n'>99.7%</td></tr>
+<tr><td>8/27</td><td>C2</td><td class='n'>318</td><td class='n'>312</td><td class='n'>1</td><td class='n'>5</td><td class='n'>98.1%</td></tr>
+<tr><td>9/1</td><td>C3</td><td class='n'>320</td><td class='n'>316</td><td class='n'>3</td><td class='n'>1</td><td class='n'>98.8%</td></tr>
+<tr><td>9/3</td><td>C4</td><td class='n'>302</td><td class='n'>296</td><td class='n'>1</td><td class='n'>5</td><td class='n'>98.0%</td></tr>
+<tr><td>9/8</td><td>C5</td><td class='n'>294</td><td class='n'>290</td><td class='n'>3</td><td class='n'>1</td><td class='n'>98.6%</td></tr>
+<tr><td>9/15</td><td>C7</td><td class='n'>291</td><td class='n'>287</td><td class='n'>3</td><td class='n'>1</td><td class='n'>98.6%</td></tr>
+<tr><td>9/22</td><td>C9</td><td class='n'>297</td><td class='n'>296</td><td class='n'>0</td><td class='n'>1</td><td class='n'>99.7%</td></tr>
+<tr><td>9/29</td><td>C11</td><td class='n'>283</td><td class='n'>281</td><td class='n'>2</td><td class='n'>0</td><td class='n'>99.3%</td></tr></table></div><p class="note">Shares are of form submissions, not a roster-based attendance rate: the form collects no names or IDs.</p></section>
+<section id="questions"><h2>3 &middot; Class questions and answers</h2><p class="sub">Questions matched after lowercasing and stripping punctuation; the label is the most common original spelling.</p><div class="scroll"><table><tr><th>Question</th><th class='n'>Submissions</th><th class='n'>Share</th></tr><tr><td>How do you use AI?</td><td class='n'>125</td><td class='n'>5.3%</td></tr>
+<tr><td>what does a DBMS do that a spreadsheet usually cannot enforce?</td><td class='n'>96</td><td class='n'>4.1%</td></tr>
+<tr><td>How are you doing the readings, when do you usually complete them, and how do you prepare for lab?</td><td class='n'>67</td><td class='n'>2.9%</td></tr>
+<tr><td>3 advantages of SQL</td><td class='n'>61</td><td class='n'>2.6%</td></tr>
+<tr><td>How are you doing the readings, when do you usually complete them, and how do you prepare for the lab?</td><td class='n'>56</td><td class='n'>2.4%</td></tr>
+<tr><td>What are 3 advantages of SQL?</td><td class='n'>45</td><td class='n'>1.9%</td></tr>
+<tr><td>What skills do you need to manage information systems?</td><td class='n'>45</td><td class='n'>1.9%</td></tr>
+<tr><td>Name 3 advantages of SQL</td><td class='n'>38</td><td class='n'>1.6%</td></tr>
+<tr><td>What skills do you need to manage an information system?</td><td class='n'>38</td><td class='n'>1.6%</td></tr>
+<tr><td>Which questions does your grading database need to answer?</td><td class='n'>29</td><td class='n'>1.2%</td></tr></table></div><p class="note">1,735 submissions asked other, one-off questions. 4 recorded no question; 97 left it blank.</p><h2 style='margin-top:18px'>Answers, as category counts</h2><div class="scroll"><table><tr><th>Question</th><th class='n'>Yes</th><th class='n'>No</th><th class='n'>Unsure</th><th class='n'>Other</th><th class='n'>Blank</th></tr><tr><td>How do you use AI?</td><td class='n'>0</td><td class='n'>1</td><td class='n'>1</td><td class='n'>123</td><td class='n'>0</td></tr>
+<tr><td>what does a DBMS do that a spreadsheet usually cannot enforce?</td><td class='n'>5</td><td class='n'>0</td><td class='n'>0</td><td class='n'>91</td><td class='n'>0</td></tr>
+<tr><td>How are you doing the readings, when do you usually complete them, and how do you prepare for lab?</td><td class='n'>4</td><td class='n'>0</td><td class='n'>1</td><td class='n'>62</td><td class='n'>0</td></tr></table></div><div class="highlight"><strong>The yes/no question:</strong> "Will you do the practice test before Tuesday?"<br>262 submissions asked it in one of 172 similar wordings (merged for the split).<br>Yes <strong>244</strong> (93.1%) &middot; No <strong>11</strong> (4.2%) &middot; Unsure 2 &middot; Other 5 &middot; blank 0</div><p class="note">Keyword classification (priority: blank, unsure, yes, no); counts only - no answer text is shown. For the yes/no split, near-identical wordings of the same question are merged.</p></section>
+<section id="absence"><h2>4 &middot; Absence reasons</h2><p class="sub">14 submissions marked absent; 14 include a reason.</p><div class="chartwrap"><svg viewBox="0 0 700 184" class="chart" role="img" aria-label="Absence reasons by category"><text x="165" y="28.0" text-anchor="end" font-size="12" fill="var(--ink)">Illness / medical</text><rect x="175" y="13" width="455.0" height="20" rx="4" fill="var(--c-present)"/><text x="638.0" y="28.0" font-size="12" fill="var(--muted)" font-weight="600">8</text><text x="165" y="62.0" text-anchor="end" font-size="12" fill="var(--ink)">Family / personal</text><rect x="175" y="47" width="113.8" height="20" rx="4" fill="var(--c-present)"/><text x="296.8" y="62.0" font-size="12" fill="var(--muted)" font-weight="600">2</text><text x="165" y="96.0" text-anchor="end" font-size="12" fill="var(--ink)">Athletics / travel</text><rect x="175" y="81" width="227.5" height="20" rx="4" fill="var(--c-present)"/><text x="410.5" y="96.0" font-size="12" fill="var(--muted)" font-weight="600">4</text><text x="165" y="130.0" text-anchor="end" font-size="12" fill="var(--ink)">Schedule / work</text><rect x="175" y="115" width="0.0" height="20" rx="4" fill="var(--c-present)"/><text x="183.0" y="130.0" font-size="12" fill="var(--muted)" font-weight="600">0</text><text x="165" y="164.0" text-anchor="end" font-size="12" fill="var(--ink)">Other</text><rect x="175" y="149" width="0.0" height="20" rx="4" fill="var(--c-present)"/><text x="183.0" y="164.0" font-size="12" fill="var(--muted)" font-weight="600">0</text></svg></div><p class="note">0 absences come with no reason. Reasons are grouped into coarse categories; no individual reason text is shown.</p></section>
+<section id="data-quality"><h2>5 &middot; What an agent catches in 30 seconds</h2><p class="sub">Checks run on the raw file. Counts are reported as observed; nothing was corrected or removed.</p><ul class="dq"><li><span class="badge">15</span>class dates with impossible years (free-typed entry errors): 1/17/2005 (1), 12/20/2004 (1), 4/1/2003 (1), 4/26/2005 (1), 6/15/2006 (1), 6/30/2005 (1), 8/25/2005 (1), 9/1/2027 (1), 9/16/2006 (1), 9/25/2007 (5), 9/28/3026 (1)</li>
+<li><span class="badge">6</span>stray dates with fewer than 50 submissions: 8/9/2026 (1), 8/15/2026 (1), 8/22/2026 (1), 9/4/2026 (1), 9/10/2026 (1), 9/24/2026 (1)</li>
+<li><span class="badge">2</span>meeting days with essentially no submissions (inferred from the session weekday pattern): 9/10 (1), 9/17 (none), 9/24 (1)</li>
+<li><span class="badge">203</span>submissions where the class number does not match the date's usual class number</li>
+<li><span class="badge">1</span>identical duplicated rows (1 duplicate groups)</li>
+<li><span class="badge">4</span>participation cells that say "did not participate" and also list an action</li>
+<li><span class="badge">0</span>absent records that still carry seat or participation details</li>
+<li><span class="badge">0</span>records marked present that give a reason for missing class</li>
+<li><span class="badge">2</span>answers that clearly do not answer the question (short fillers or memory disclaimers)</li></ul></section>
+<footer><p class="mono">Reproduce: python analyze.py (stdlib only, run in this folder)</p><p>Files: report.html &middot; session-stats.csv &middot; category-counts.csv &middot; analysis-plan.md &middot; analysis-notes.md</p><p>Source SHA-256: <span class="mono">9ae0d2c35f1ac66c3f625ffa710996f38539580ba85e705c9306ddfb2760704f</span></p><p>Rows are form submissions, not verified attendance or unique students. Free-text answers and absence reasons appear only as aggregate categories. Entry errors were counted, never corrected.</p></footer>
+</div>
+</body>
+</html>

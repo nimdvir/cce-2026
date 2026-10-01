@@ -2,10 +2,11 @@
 """Build the CCE 2026 website.
 
 Renders every Markdown file in docs/content/ into a page in docs/ using
-docs/template.html, and mirrors assets/images/ into docs/assets/images/ so
-the image paths written in the content resolve on GitHub Pages.
+docs/template.html, then checks every local link, image and anchor in the
+generated pages and in the hand-written walkthroughs under docs/examples/.
 
-Usage:  python docs/build.py
+Usage:  python docs/build.py            (exit code 1 if a link is broken)
+        python docs/build.py --page lecture
 
 The Markdown files are the source of truth. Never edit the generated HTML.
 Requires Python 3 and the `markdown` package (tested with 3.10.3).
@@ -14,8 +15,8 @@ Requires Python 3 and the `markdown` package (tested with 3.10.3).
 from __future__ import annotations
 
 import html
+import argparse
 import re
-import shutil
 import sys
 from pathlib import Path
 
@@ -25,8 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 CONTENT = DOCS / "content"
 TEMPLATE = DOCS / "template.html"
-IMAGES_SRC = ROOT / "assets" / "images"
-IMAGES_DST = DOCS / "assets" / "images"
+EXAMPLES = DOCS / "examples"
 
 # The content was written for exactly these extensions. Do not add or remove
 # any without re-checking every page.
@@ -38,7 +38,12 @@ PAGES = [
     ("lecture", "lecture.html", "Lecture"),
     ("explanation", "explanation.html", "Explanation"),
     ("examples", "examples.html", "Examples"),
+    ("about", "about.html", "Stay in touch"),
 ]
+
+# The nav ends with a mail link. The label hides at phone width (site.css),
+# leaving the icon; the aria-label keeps it named either way.
+CONTACT_EMAIL = "ndvir@albany.edu"
 
 # attr_list attaches a trailing `{: .class }` after a list to the last <li>,
 # not to the list itself. Classes named here are hoisted to the parent list.
@@ -138,6 +143,11 @@ def build_nav(current: str) -> str:
             )
         else:
             items.append(f'<a href="{out_name}">{label}</a>')
+    items.append(
+        f'<a class="nav-contact" href="mailto:{CONTACT_EMAIL}" aria-label="Contact me by email">'
+        '<i class="fa-solid fa-envelope" aria-hidden="true"></i>'
+        '<span class="nav-contact-label">Contact me</span></a>'
+    )
     return '<nav class="site-nav" aria-label="Site">\n' + "\n".join(items) + "\n</nav>"
 
 
@@ -152,49 +162,66 @@ def build_page(stem: str, out_name: str, template: str) -> str:
     page = template.replace("{{title}}", html.escape(first_h1(md_text)))
     page = page.replace("{{nav}}", build_nav(out_name))
     page = page.replace("{{content}}", body.strip() + "\n")
+    if stem == "examples":
+        page = page.replace("</head>", '<link rel="stylesheet" href="assets/examples.css">\n</head>')
     return page
 
 
-def copy_images() -> None:
-    if IMAGES_DST.exists():
-        shutil.rmtree(IMAGES_DST)
-    shutil.copytree(IMAGES_SRC, IMAGES_DST)
+def check_links() -> list[str]:
+    """Report local links, images and anchors that do not resolve.
 
-
-def check_links(pages: dict[str, str]) -> list[str]:
-    """Report local links and images that do not resolve inside docs/."""
+    Reads every generated page in docs/ and every HTML file under
+    docs/examples/ from disk, so a --page build is still checked as a whole.
+    """
+    files = [DOCS / out_name for _stem, out_name, _label in PAGES]
+    if EXAMPLES.is_dir():
+        files += sorted(EXAMPLES.rglob("*.html"))
+    bodies = {f.resolve(): read_text(f) for f in files if f.exists()}
+    id_lists = {f: re.findall(r'\bid="([^"]+)"', body) for f, body in bodies.items()}
+    ids = {f: set(found) for f, found in id_lists.items()}
     problems = []
-    ids = {name: set(re.findall(r'\bid="([^"]+)"', body)) for name, body in pages.items()}
-    for name, body in pages.items():
+    for f, found in id_lists.items():
+        name = f.relative_to(DOCS).as_posix()
+        for dup in sorted({i for i in found if found.count(i) > 1}):
+            problems.append(f"{name}: duplicate id #{dup}")
+    for f, body in bodies.items():
+        name = f.relative_to(DOCS).as_posix()
         for ref in re.findall(r'\b(?:href|src)="([^"]+)"', body):
-            if re.match(r"^(https?:|mailto:|//)", ref):
+            if re.match(r"^(https?:|mailto:|tel:|data:|//)", ref):
                 continue
             target, _, frag = ref.partition("#")
-            target = target or name
-            if not (DOCS / target).exists():
+            dest = (f.parent / target).resolve() if target else f
+            if not dest.exists():
                 problems.append(f"{name}: missing file {ref}")
                 continue
-            if frag and target in ids and frag not in ids[target]:
-                problems.append(f"{name}: no id #{frag} in {target}")
+            if frag and dest in ids and frag not in ids[dest]:
+                problems.append(f"{name}: no id #{frag} in {dest.relative_to(DOCS).as_posix()}")
     return problems
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--page", choices=[p[0] for p in PAGES],
+                        help="Rebuild one page, preserving other generated pages")
+    args = parser.parse_args()
     try:
         sys.stdout.reconfigure(encoding="utf-8")
     except AttributeError:
         pass
     template = read_text(TEMPLATE)
-    copy_images()
-    pages = {}
     for stem, out_name, _label in PAGES:
+        if args.page and stem != args.page:
+            continue
         page = build_page(stem, out_name, template)
         write_text(DOCS / out_name, page)
-        pages[out_name] = page
         print(f"wrote docs/{out_name}  <- docs/content/{stem}.md")
-    print("copied assets/images/ -> docs/assets/images/")
-    for problem in check_links(pages):
-        print(f"warning: {problem}")
+    problems = check_links()
+    for problem in problems:
+        print(f"broken: {problem}")
+    if problems:
+        print(f"{len(problems)} problem(s) found")
+        return 1
+    print("links, images and anchors: all resolve")
     return 0
 
 

@@ -14,15 +14,15 @@ Cengage Computing Experience 2026 · Trends and Emerging Technologies in Computi
 **Short URL:** [spoo.me/cHzhyF2](https://spoo.me/cHzhyF2)
 
 - [Start the Lecture](lecture.html)
-- [Download Slides](assets/slides.pdf) <!-- TODO: docs/assets/slides.pdf does not exist yet; it is exported from the deck in plan-claude.md, Step 16 -->
+- [Download Slides (PDF)](assets/cce-2026-slides.pdf)
 - [GitHub Repository](https://github.com/nimdvir/cce-2026)
 {: .buttons }
 
 <!-- LIVE BANNER. Demo 0 edits the single line below. Keep it one line so the change is obvious on screen. Leave the {: .live-banner } tag; the stylesheet uses it. -->
-🔴 Live from CCE 2026 — *this line will change during the session.*
+🔴 Live from CCE 2026. *This line will change during the session.*
 {: .live-banner }
 
-> **This website is the presentation — and AI agents helped me build it.**
+> **This website is the presentation, and AI agents helped me build it.**
 
 During this session you will see how this site was built. You will see how agents work on academic tasks. And you will watch part of this site change live.
 
@@ -33,9 +33,21 @@ During this session you will see how this site was built. You will see how agent
 - **Teaching:** databases, SQL, programming, analytics, information systems, responsible AI use. Lecturer in Information Systems and Business Analytics at the Massry School of Business, University at Albany, SUNY.
 - **Research:** artificial intelligence, human-computer interaction, user experience, business analytics. Over a decade of experience in UX and AI research.
 - **Building:** courseware, course websites, a database and MIS textbook, academic workflows.
-- **Why agents:** <span class="marker">I always wanted to build things but didn't feel I had the knowledge — without being an engineer, I thought I couldn't do it. Then AI agents changed everything. Now I build websites, scripts, automations — you name it — and I'm happy to share that knowledge.</span>
+- **Why agents:** <span class="marker">I always wanted to build things but didn't feel I had the knowledge. Without being an engineer, I thought I couldn't do it. Then AI agents changed everything. Now I build websites, scripts, automations, you name it, and I'm happy to share that knowledge.</span>
 
-[nimdvir.com](https://nimdvir.com) · [linkedin.com/in/nimdvir](https://linkedin.com/in/nimdvir/) · [albany.edu/business/faculty/nim-dvir](https://albany.edu/business/faculty/nim-dvir)
+[More about me, and how to stay in touch](about.html)
+
+<div class="contact-links" markdown="1">
+
+- [<i class="fa-solid fa-envelope" aria-hidden="true"></i> ndvir@albany.edu](mailto:ndvir@albany.edu)
+- [<i class="fa-solid fa-globe" aria-hidden="true"></i> nimdvir.com](https://nimdvir.com){: target="_blank" rel="noopener" }
+- [<i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn](https://www.linkedin.com/in/nimdvir/){: target="_blank" rel="noopener" }
+- [<i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram](https://www.instagram.com/nimdvir/){: target="_blank" rel="noopener" }
+- [<i class="fa-solid fa-building-columns" aria-hidden="true"></i> UAlbany faculty page](https://www.albany.edu/business/faculty/nim-dvir){: target="_blank" rel="noopener" }
+- [<i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Google Scholar](https://scholar.google.com/citations?user=vzFELz4AAAAJ&hl=en){: target="_blank" rel="noopener" }
+- [<i class="fa-brands fa-github" aria-hidden="true"></i> GitHub](https://github.com/nimdvir/cce-2026){: target="_blank" rel="noopener" }
+
+</div>
 
 ---
 

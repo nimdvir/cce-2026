@@ -1,6 +1,6 @@
 ---
-mode: agent
-description: Write the four Markdown source files for the CCE 2026 website from the site outline, checking the other reference files for anything the outline missed.
+agent: agent
+description: Original prompt, kept as written. It wrote the first four Markdown pages of the CCE 2026 website from the site outline. The presentation outline files it names were in the working folder and are not in this repository.
 ---
 
 Write the four Markdown source files for the CCE 2026 website in `docs/content/`:

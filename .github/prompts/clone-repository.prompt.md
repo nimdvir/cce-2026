@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: agent
 description: Clone the CCE 2026 repository into the local GitHub workspace, or safely update it if it already exists. Run before any work on the project.
 ---
 
