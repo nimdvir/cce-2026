@@ -38,6 +38,7 @@ PAGES = [
     ("lecture", "lecture.html", "Lecture"),
     ("explanation", "explanation.html", "Explanation"),
     ("examples", "examples.html", "Examples"),
+    ("live", "live.html", "Live"),
     ("about", "about.html", "Stay in touch"),
 ]
 
