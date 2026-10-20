@@ -1110,7 +1110,7 @@ img[src$="qr-contact.png"] {
 }
 
 .about-qr img {
-  width: 13rem;
+  width: 15rem;
   margin-bottom: 0.5rem;
 }
 
@@ -1119,6 +1119,19 @@ img[src$="qr-contact.png"] {
     flex-direction: row;
     justify-content: center;
     gap: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Keep the caption out of the row's alignment so the QR and photo line up */
+  .about-qr {
+    position: relative;
+  }
+
+  .about-qr p:last-child {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
   }
 }
 
