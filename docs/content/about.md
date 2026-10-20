@@ -1,6 +1,18 @@
 # Stay in touch
 
+<div class="about-portrait" markdown="1">
+
+<div class="about-qr" markdown="1">
+
+![QR code with contact details for Nim Dvir](assets/images/qr-contact.png)
+
+Scan to save my contact details
+
+</div>
+
 ![Nim Dvir](assets/images/headshot-crop.jpg)
+
+</div>
 
 **Dr. Nimrod (Nim) Dvir**
 

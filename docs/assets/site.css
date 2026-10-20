@@ -1078,11 +1078,48 @@ img[src$="headshot-crop.jpg"] {
   box-shadow: var(--shadow-lg);
 }
 
-img[src$="qr-site.png"] {
+img[src$="qr-site.png"],
+img[src$="qr-contact.png"] {
   width: min(100%, 17rem);
   padding: 0.75rem;
   background: #ffffff;
   box-shadow: var(--shadow-lg);
+}
+
+/* About page: contact QR above the headshot on phones, left of it on wide screens */
+.about-portrait {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.about-portrait p {
+  margin: 0;
+}
+
+.about-portrait img {
+  margin: 0 auto;
+}
+
+.about-qr {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.about-qr img {
+  width: 13rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 48em) {
+  .about-portrait {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2.5rem;
+  }
 }
 
 /* Next link ------------------------------------------------------------- */
