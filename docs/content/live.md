@@ -9,15 +9,16 @@
 
 ## What just happened?
 
-I asked the room for first names. An AI agent in VS Code added them to one line of this page, rebuilt the site, and pushed it to GitHub. GitHub Pages published the change, and it showed up on your phone.
+I asked the room for first names. An AI agent in VS Code added them to one line of this page and rebuilt the site on my laptop. Publishing is one more step, and I decide when.
 
-That is the same loop behind every example today: **ask, review, publish.**
+That is the same loop behind every example today: **prompt, plan, result, report.**
 
 ## Today's quick demos
 
-1. **Syllabus:** the agent moves a Word syllabus from Fall 2026 to Spring 2027 and lists what to check by hand.
-2. **Data:** the agent turns class attendance counts into one chart and three findings.
-3. **This page:** the agent adds your names and publishes the site.
+1. **Syllabus:** the agent moves a Word syllabus from Fall 2026 to Spring 2027, with the new room, time, and labs, and lists what to check by hand.
+2. **Lesson plan:** the agent writes a normalization lesson plan and a 5-slide classroom demo.
+3. **Data:** the agent turns class attendance counts into one chart and three findings.
+4. **This page:** the agent adds your names and rebuilds the site.
 
 Each one has a longer version with every prompt and result on the [Examples](examples.html) page.
 
