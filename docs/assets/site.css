@@ -1092,7 +1092,7 @@ img[src$="qr-contact.png"] {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  margin: 1.5rem 0;
+  margin: 1.5rem auto;
 }
 
 .about-portrait p {

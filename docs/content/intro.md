@@ -19,7 +19,7 @@ Cengage Computing Experience 2026 · Trends and Emerging Technologies in Computi
 {: .buttons }
 
 <!-- LIVE BANNER. Demo 0 edits the single line below. Keep it one line so the change is obvious on screen. Leave the {: .live-banner } tag; the stylesheet uses it. -->
-🔴 Live from CCE 2026. *This line will change during the session.*
+🔴 Live from CCE 2026.
 {: .live-banner }
 
 > **This website is the presentation, and AI agents helped me build it.**
