@@ -391,20 +391,17 @@ li::marker {
   box-shadow: var(--shadow-sm);
 }
 
+/* The nav wraps instead of scrolling. A scrolling nav also scrolls
+   vertically (the current pill's shadow overflows), which looked doubled. */
 .site-nav {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.25rem;
-  max-width: var(--measure);
+  max-width: 72rem;
   margin: 0 auto;
-  padding: 0 var(--gutter);
+  padding: 0.3rem var(--gutter);
   min-height: var(--nav-h);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.site-nav::-webkit-scrollbar {
-  display: none;
 }
 
 .site-nav a {
@@ -460,6 +457,22 @@ li::marker {
 
 .nav-contact + .theme-toggle {
   margin-left: 0.25rem;
+}
+
+/* Mid widths: the contact link shows only its icon, so the nav stays on one line. */
+@media (max-width: 64em) {
+  .site-nav a {
+    padding: 0.4em 0.55em;
+  }
+
+  .nav-contact-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
 }
 
 /* Narrow screens: the nav wraps onto a second line instead of shrinking

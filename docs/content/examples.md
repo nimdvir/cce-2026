@@ -7,6 +7,10 @@ Four projects I finished with an agent. Each one starts with the result. Open th
 
 **During the session:** keep this page open. Results and walkthroughs open in a new tab, so you can always come back here. I prepared every project ahead of time. If we do anything live, it will be one small change.
 
+<p class="example-actions"><a href="examples/LIVE-DEMO/index.html" target="_blank" rel="noopener">Live session demos <span class="new-window">↗<span class="sr-only"> (opens in new tab)</span></span></a></p>
+
+The four live demos from the session, with every prompt, plan, and result. Open them if you want to see how each one ran.
+
 <ol class="project-overview" markdown="1">
 
 <li markdown="block" id="this-website">

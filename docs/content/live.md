@@ -15,6 +15,10 @@ That is the same loop behind every example today: **prompt, plan, result, report
 
 ## Today's quick demos
 
+<p class="example-actions"><a href="examples/LIVE-DEMO/index.html" target="_blank" rel="noopener">Live session demos <span class="new-window">↗<span class="sr-only"> (opens in new tab)</span></span></a></p>
+
+Every live demo from the session, with its problem, files, prompt, plan, and result.
+
 1. **Syllabus:** the agent moves a Word syllabus from Fall 2026 to Spring 2027, with the new room, time, and labs, and lists what to check by hand.
 2. **Lesson plan:** the agent writes a normalization lesson plan and a 5-slide classroom demo.
 3. **Data:** the agent turns class attendance counts into one chart and three findings.
