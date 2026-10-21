@@ -25,7 +25,6 @@ Have a question about the session or the site? Want to try this in your own cour
 
 - **Email:** [ndvir@albany.edu](mailto:ndvir@albany.edu)
 - **Office:** Massry School of Business, BB397, University at Albany
-- **Phone:** [518-442-1440](tel:518-442-1440)
 
 <div class="contact-links" markdown="1">
 
