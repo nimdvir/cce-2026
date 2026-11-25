@@ -20,7 +20,7 @@
 
   function styleIntroTitle() {
     var current = document.querySelector('.site-nav a.current');
-    if (!current || current.getAttribute('href') !== 'index.html') return;
+    if (!current || current.getAttribute('href') !== './') return;
 
     document.body.classList.add('page-intro');
     var heading = document.querySelector('.page > h1');

@@ -42,6 +42,20 @@ PAGES = [
     ("about", "about.html", "Stay in touch"),
 ]
 
+# Every page names its public address in a canonical tag. GitHub Pages serves
+# clean URLs: lecture.html is /cce-2026/lecture, a folder's index.html is the
+# folder itself with a trailing slash.
+SITE_URL = "https://nimdvir.com/cce-2026/"
+
+# Meta descriptions, by source stem. Pages without one get no tag.
+DESCRIPTIONS = {
+    "lecture": (
+        "The full CCE 2026 lecture by Nim Dvir: set up GitHub, VS Code, and "
+        "Copilot, then use AI agents to build a website, convert a syllabus, "
+        "analyze data, and build courseware."
+    ),
+}
+
 # The nav ends with a mail link. The label hides at phone width (site.css),
 # leaving the icon; the aria-label keeps it named either way.
 CONTACT_EMAIL = "ndvir@albany.edu"
@@ -135,15 +149,35 @@ def mark_next_link(page_html: str) -> str:
     )
 
 
+def canonical_url(path: Path) -> str:
+    """Clean public URL of a page under docs/: no index.html, no .html."""
+    rel = path.relative_to(DOCS).as_posix()
+    if rel == "index.html" or rel.endswith("/index.html"):
+        rel = rel[: -len("index.html")]
+    elif rel.endswith(".html"):
+        rel = rel[: -len(".html")]
+    return SITE_URL + rel
+
+
+def canonical_tag(path: Path) -> str:
+    return f'<link rel="canonical" href="{canonical_url(path)}">'
+
+
+def nav_href(out_name: str) -> str:
+    """Link the home page as ./ so the menu matches its canonical URL."""
+    return "./" if out_name == "index.html" else out_name
+
+
 def build_nav(current: str) -> str:
     items = []
     for _stem, out_name, label in PAGES:
+        href = nav_href(out_name)
         if out_name == current:
             items.append(
-                f'<a href="{out_name}" class="current" aria-current="page">{label}</a>'
+                f'<a href="{href}" class="current" aria-current="page">{label}</a>'
             )
         else:
-            items.append(f'<a href="{out_name}">{label}</a>')
+            items.append(f'<a href="{href}">{label}</a>')
     items.append(
         f'<a class="nav-contact" href="mailto:{CONTACT_EMAIL}" aria-label="Contact me by email">'
         '<i class="fa-solid fa-envelope" aria-hidden="true"></i>'
@@ -160,7 +194,13 @@ def build_page(stem: str, out_name: str, template: str) -> str:
     body = wrap_tables(body)
     body = mark_code_blocks(body)
     body = mark_next_link(body)
+    head_meta = [canonical_tag(DOCS / out_name)]
+    if stem in DESCRIPTIONS:
+        head_meta.append(
+            f'<meta name="description" content="{html.escape(DESCRIPTIONS[stem])}">'
+        )
     page = template.replace("{{title}}", html.escape(first_h1(md_text)))
+    page = page.replace("{{head_meta}}", "\n".join(head_meta))
     page = page.replace("{{nav}}", build_nav(out_name))
     page = page.replace("{{content}}", body.strip() + "\n")
     if stem == "examples":
@@ -192,11 +232,28 @@ def check_links() -> list[str]:
                 continue
             target, _, frag = ref.partition("#")
             dest = (f.parent / target).resolve() if target else f
+            if dest.is_dir():
+                dest = dest / "index.html"
             if not dest.exists():
                 problems.append(f"{name}: missing file {ref}")
                 continue
             if frag and dest in ids and frag not in ids[dest]:
                 problems.append(f"{name}: no id #{frag} in {dest.relative_to(DOCS).as_posix()}")
+    return problems
+
+
+def check_canonicals() -> list[str]:
+    """Every HTML page under docs/ needs exactly one canonical tag, and it
+    must point at the page's own clean URL."""
+    problems = []
+    for f in sorted(DOCS.rglob("*.html")):
+        if f == TEMPLATE:
+            continue
+        name = f.relative_to(DOCS).as_posix()
+        found = re.findall(r'<link rel="canonical" href="([^"]*)">', read_text(f))
+        expected = canonical_url(f)
+        if found != [expected]:
+            problems.append(f"{name}: canonical should be {expected}, found {found or 'none'}")
     return problems
 
 
@@ -216,13 +273,13 @@ def main() -> int:
         page = build_page(stem, out_name, template)
         write_text(DOCS / out_name, page)
         print(f"wrote docs/{out_name}  <- docs/content/{stem}.md")
-    problems = check_links()
+    problems = check_links() + check_canonicals()
     for problem in problems:
         print(f"broken: {problem}")
     if problems:
         print(f"{len(problems)} problem(s) found")
         return 1
-    print("links, images and anchors: all resolve")
+    print("links, images, anchors and canonical tags: all correct")
     return 0
 
 
